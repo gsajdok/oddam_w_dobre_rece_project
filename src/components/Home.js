@@ -8,13 +8,12 @@ import {HomeContact} from "./HomeContact";
 export const Home = () => {
     return (
         <>
-            <h1>Home</h1>
-            <HomeHeader/>
-            <HomeThreeColumns/>
-            <HomeSimpleSteps/>
-            <HomeAboutUs/>
-            <HomeWhoWeHelp/>
-            <HomeContact/>
+            <HomeHeader id="header"/>
+            <HomeThreeColumns id="threeColumns"/>
+            <HomeSimpleSteps id="simpleSteps"/>
+            <HomeAboutUs id="aboutUs"/>
+            <HomeWhoWeHelp id="whoWeHelp"/>
+            <HomeContact id="contact"/>
         </>
     )
 }

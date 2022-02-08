@@ -1,7 +1,7 @@
-export const HomeThreeColumns = () => {
+export const HomeThreeColumns = ({id}) => {
     return (
-        <>
-            <h1>Three Columns</h1>
-        </>
+        <section id={id}>
+            <h1>Three columns</h1>
+        </section>
     )
 }
