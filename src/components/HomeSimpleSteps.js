@@ -1,7 +1,7 @@
-export const HomeSimpleSteps = () => {
+export const HomeSimpleSteps = ({id}) => {
     return (
-        <>
-            <h1>Simple Steps</h1>
-        </>
+        <section id={id}>
+            <h1>Simple steps</h1>
+        </section>
     )
 }

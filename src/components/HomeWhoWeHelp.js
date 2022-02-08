@@ -1,7 +1,7 @@
-export const HomeWhoWeHelp = () => {
+export const HomeWhoWeHelp = ({id}) => {
     return (
-        <>
-            <h1>Who We Help</h1>
-        </>
+        <section id={id}>
+            <h1>Who we help</h1>
+        </section>
     )
 }
