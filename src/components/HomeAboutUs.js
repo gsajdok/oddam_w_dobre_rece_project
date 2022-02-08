@@ -13,10 +13,10 @@ export const HomeAboutUs = ({id}) => {
                             <h2>O nas</h2>
                             <img src={Decoration} alt="Decoration" className="decoration"/>
                             <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip.</p>
-                            <img src={Signature} alt="Signature"/>
+                            <img src={Signature} alt="Signature" className="signature"/>
                         </div>
                     </div>
-                    <div className="image signature">
+                    <div className="image">
                         <img src={People} alt="People"/>
                     </div>
                 </div>
