@@ -1,7 +1,7 @@
 import HomeHeroImage from '../assets/Home-Hero-Image.jpg';
 import Decoration from '../assets/Decoration.svg';
 import {Link} from "react-router-dom";
-import {Link as ScrollLink, animateScroll as scroll } from "react-scroll";
+import {Link as ScrollLink} from "react-scroll";
 
 
 export const HomeHeader = ({id}) => {
@@ -23,7 +23,7 @@ export const HomeHeader = ({id}) => {
                         </nav>
                     </div>
                     <div className="image">
-                        <img src={HomeHeroImage} alt="Home Image"/>
+                        <img src={HomeHeroImage} alt="Home"/>
                     </div>
                     <div className="cta__wrapper">
                         <div className="cta">
