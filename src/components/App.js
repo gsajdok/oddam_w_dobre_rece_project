@@ -1,6 +1,15 @@
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Home} from "./Home";
+import {NotFound} from "./NotFound";
+
 function App() {
   return (
-    <h1>Welcome</h1>
+    <BrowserRouter>
+        <Routes>
+            <Route path="*" element={<NotFound/>}/>
+            <Route path="/" element={<Home/>}/>
+        </Routes>
+    </BrowserRouter>
   );
 }
 
