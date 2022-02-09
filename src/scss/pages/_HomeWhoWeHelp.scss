@@ -1,0 +1,82 @@
+.homeWhoWeHelp {
+  height: 63.25rem;
+  padding-top: 4.375rem;
+  padding-bottom: 5rem;
+  position: relative;
+
+  .wrapper {
+    max-width: 84rem;
+    margin: 0 auto;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+
+      .header {
+
+        .decoration {
+          padding-top: 1.5625rem;
+          padding-bottom: 4.0625rem;
+        }
+      }
+
+      .description__wrapper {
+
+        p {
+          width: 40rem;
+          font-size: 1.375rem;
+          display: inline-block;
+        }
+      }
+
+      .results__wrapper {
+        width: 84rem;
+
+        .result {
+          position: relative;
+          text-align: left;
+
+          span.name {
+            font-family: $font-alt;
+            font-size: 1.625rem;
+            font-weight: 300;
+          }
+
+          p.description {
+            font-family: $font-alt;
+            font-size: 1.125rem;
+            font-weight: 300;
+          }
+
+          p.examples {
+            position: absolute;
+            right: 0;
+            top: 0;
+            margin: 0;
+            font-family: $font-alt;
+            font-size: 1.125rem;
+            font-weight: 300;
+          }
+
+          &:not(:first-child) {
+            border-top: 1px solid black;
+            padding-top: 2.125rem;
+
+            p.examples {
+              top: 2.125rem;
+            }
+          }
+        }
+      }
+
+      .controller_wrapper {
+        position: absolute;
+        bottom: 5rem;
+        left: 50%;
+        transform: translate(-50%, 0)
+      }
+    }
+  }
+}
