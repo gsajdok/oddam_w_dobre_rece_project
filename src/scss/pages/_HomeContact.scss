@@ -1,0 +1,100 @@
+.homeContact {
+  background-image: url("../../assets/Background-Contact-Form.jpg");
+  background-color: rgba(255, 255, 255, 0.8);
+  background-size: cover;
+  background-blend-mode: lighten;
+
+  .wrapper {
+    max-width: 100rem;
+    margin: 0 auto;
+    height: 64.125rem;
+
+    .content {
+      height: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+
+      .form__wrapper {
+        text-align: center;
+        max-width: 33rem;
+
+        .decoration {
+          padding-top: 1.5625rem;
+          padding-bottom: 4.0625rem;
+        }
+
+        form {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          text-align: left;
+          justify-content: space-between;
+
+          label {
+            margin-bottom: 2rem;
+            font-weight: 600;
+          }
+
+          label:not(:last-child) {
+            flex-basis:45%;
+            flex-grow: 0;
+          }
+
+          label:nth-child(3) {
+            flex-basis: 100%;
+            width: 100%;
+          }
+
+          textarea {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid black;
+            padding-top: 1rem;
+          }
+
+          input:not(#form__submit) {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid black;
+            padding-top: 1rem;
+          }
+
+          input#form__submit {
+            width: auto;
+            margin-left: auto;
+          }
+
+          input::placeholder, textarea::placeholder{
+            font-size: 1.125rem;
+            color: #3C3C3C26;
+          }
+        }
+      }
+
+      .copyright {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+        bottom: 1.5rem;
+        p {
+          margin: 0;
+        }
+      }
+
+      .icons {
+        position: absolute;
+        right: 0;
+        bottom: 1.5rem;
+        img {
+          padding-left: 2rem;
+        }
+      }
+
+    }
+  }
+}

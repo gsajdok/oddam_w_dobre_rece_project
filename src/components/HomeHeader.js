@@ -19,7 +19,7 @@ export const HomeHeader = ({id}) => {
                             <ScrollLink to="threeColumns" smooth={true} duration={500}><span className="button">O co chodzi?</span></ScrollLink>
                             <ScrollLink to="aboutUs" smooth={true} duration={500}><span className="button">O nas</span></ScrollLink>
                             <ScrollLink to="whoWeHelp" smooth={true} duration={500}><span className="button">Fundacje i organizacje</span></ScrollLink>
-                            <ScrollLink to="contact" smooth={true} duration={500}><span className="button noRightPadding">Kontakt</span></ScrollLink>
+                            <ScrollLink to="contact" smooth={true} duration={500} offset={60}><span className="button noRightPadding">Kontakt</span></ScrollLink>
                         </nav>
                     </div>
                     <div className="image">
