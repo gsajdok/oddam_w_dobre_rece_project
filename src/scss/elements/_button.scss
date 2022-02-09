@@ -5,13 +5,14 @@
   padding: 0.5625rem 1.25rem;
   color: $colorText;
   border: 0.75px solid transparent;
+  background-color: transparent;
 
   &.button--active {
     border: 0.75px solid #3C3C3C;
   }
 
   &:hover {
-    text-decoration: underline;
+    border: 0.75px solid #3C3C3C;
   }
 
 
