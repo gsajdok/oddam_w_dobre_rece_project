@@ -46,7 +46,7 @@ export const HomeWhoWeHelp = ({id}) => {
                             </div>
                         </div>
                         <div className="controller_wrapper">
-                            {Array(Math.ceil(currentData.list.length/3)).fill(null).map((e, i) => (
+                            {Array(Math.ceil(currentData.list.length/3 > 1 ? currentData.list.length/3 : 0)).fill(null).map((e, i) => (
                                 <button onClick={pageClickHandler} className="button button--small" id={i+1} key={i}>{i+1}</button>
                             ))}
                         </div>
