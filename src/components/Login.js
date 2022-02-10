@@ -6,7 +6,6 @@ export const LoginPage = () => {
             <section className="account">
                 <div className="wrapper">
                     <div className="content">
-                        <Navigation/>
                     </div>
                 </div>
             </section>

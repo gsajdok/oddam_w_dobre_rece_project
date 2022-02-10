@@ -1,0 +1,24 @@
+.nav__wrapper {
+  max-width: 100rem;
+  position: relative;
+  margin: 0 auto;
+  z-index: 100;
+
+  .nav__container {
+    margin-top: 2.875rem;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    top: 0;
+    right: 0;
+    gap: 1rem;
+
+    nav.home {
+      .noRightPadding {
+        padding-right: 0;
+      }
+    }
+  }
+}
+

@@ -12,23 +12,6 @@
       align-items: center;
       justify-content: center;
 
-      .nav__container {
-        margin-top: 2.875rem;
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        top: 0;
-        right: 0;
-        gap: 1rem;
-
-        nav.home {
-          .noRightPadding {
-            padding-right: 0;
-          }
-        }
-      }
-
       .image {
         flex-basis: 50%;
         flex-grow: 0;

@@ -1,7 +1,6 @@
 import HomeHeroImage from '../assets/Home-Hero-Image.jpg';
 import Decoration from '../assets/Decoration.svg';
 import {Link} from "react-router-dom";
-import {Navigation} from "./Navigation";
 
 
 export const HomeHeader = ({id}) => {
@@ -9,7 +8,6 @@ export const HomeHeader = ({id}) => {
         <header className="homeHeader" id={id}>
             <div className="wrapper">
                 <div className="content">
-                    <Navigation/>
                     <div className="image">
                         <img src={HomeHeroImage} alt="Home"/>
                     </div>
