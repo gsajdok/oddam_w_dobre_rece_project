@@ -1,7 +1,21 @@
-import {Link} from "react-router-dom";
-import {Link as ScrollLink} from "react-scroll";
+import {Link, useNavigate, useLocation} from "react-router-dom";
+import {Link as ScrollLink, scroller} from "react-scroll";
+import {useEffect} from "react";
 
-export const Navigation = () => {
+export const Navigation = ({scrollFunction, setScrollTarget}) => {
+    let location = useLocation();
+    const navigate = useNavigate();
+
+
+    const scrollToID = (id) => {
+        if(location.pathname === "/") {
+            scrollFunction(id);
+        } else {
+            setScrollTarget(id);
+            navigate("/")
+        }
+    }
+
     return (
         <div className="nav__wrapper">
             <div className="nav__container">
@@ -10,11 +24,11 @@ export const Navigation = () => {
                     <Link to="/rejestracja"><span className="button button--small button--yellow">Załóż konto</span></Link>
                 </nav>
                 <nav className="home">
-                    <ScrollLink to="header" smooth={true} duration={500}><span className="button button--active">Start</span></ScrollLink>
-                    <ScrollLink to="threeColumns" smooth={true} duration={500}><span className="button">O co chodzi?</span></ScrollLink>
-                    <ScrollLink to="aboutUs" smooth={true} duration={500}><span className="button">O nas</span></ScrollLink>
-                    <ScrollLink to="whoWeHelp" smooth={true} duration={500}><span className="button">Fundacje i organizacje</span></ScrollLink>
-                    <ScrollLink to="contact" smooth={true} duration={500} offset={60}><span className="button">Kontakt</span></ScrollLink>
+                    <a className="button button--active" onClick={() => scrollToID("header")}>Start</a>
+                    <a className="button" onClick={() => scrollToID("threeColumns")}>O co chodzi?</a>
+                    <a className="button" onClick={() => scrollToID("aboutUs")}>O nas</a>
+                    <a className="button" onClick={() => scrollToID("whoWeHelp")}>Fundacje i organizacje</a>
+                   <a className="button" onClick={() => scrollToID("contact")}>Kontakt</a>
                 </nav>
             </div>
         </div>
