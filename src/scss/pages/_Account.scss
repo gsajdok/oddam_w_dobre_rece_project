@@ -1,0 +1,33 @@
+.account {
+
+  .wrapper {
+    max-width: 100rem;
+    margin: 0 auto;
+
+    .content {
+      height: 60.1875rem;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      .nav__container {
+        margin-top: 2.875rem;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        top: 0;
+        right: 0;
+        gap: 1rem;
+
+        nav.home {
+          .noRightPadding {
+            padding-right: 0;
+          }
+        }
+      }
+    }
+  }
+}
