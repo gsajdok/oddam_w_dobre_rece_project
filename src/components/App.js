@@ -6,6 +6,7 @@ import {RegisterPage} from "./RegisterPage";
 import {Navigation} from "./Navigation";
 import {scroller} from "react-scroll";
 import {useEffect, useState} from "react";
+import {LogoutPage} from "./Logout";
 
 function App() {
     const [scrollTarget, setScrollTarget] = useState(undefined);
@@ -36,6 +37,7 @@ function App() {
             <Route path="/" element={<Home/>}/>
             <Route path="/logowanie" element={<LoginPage/>}/>
             <Route path="/rejestracja" element={<RegisterPage/>}/>
+            <Route path="/wylogowano" element={<LogoutPage/>}/>
         </Routes>
     </BrowserRouter>
   );

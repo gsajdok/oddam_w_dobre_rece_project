@@ -5,28 +5,41 @@
     margin: 0 auto;
 
     .content {
-      height: 60.1875rem;
+      height: 100vh;
       position: relative;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
 
-      .nav__container {
-        margin-top: 2.875rem;
-        position: absolute;
+      .accountWindow__wrapper {
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
-        top: 0;
-        right: 0;
-        gap: 1rem;
+        max-width: 31.5rem;
+        align-items: center;
 
-        nav.home {
-          .noRightPadding {
-            padding-right: 0;
+        h2 {
+          text-align: center;
+        }
+
+        .accountForm {
+          background-color: #F0F1F1;
+          padding: 2.5rem 4.2rem;
+          margin: 0 4.2rem;
+        }
+
+        .button__wrapper {
+          padding-top: 2rem;
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          *:only-child {
+            margin: 0 auto;
           }
         }
+
       }
     }
   }
