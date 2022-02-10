@@ -1,11 +1,13 @@
 import {HomeWhoWeHelpResult} from "./HomeWhoWeHelpResult";
 import {WhoWeHelpData} from "../assets/whoWeHelpData";
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {Decoration} from "./Decoration";
+import {HomeWhoWeHelpButton} from "./HomeWhoWeHelpButton";
 
 export const HomeWhoWeHelp = ({id}) => {
     const [currentData, setCurrentData] = useState(WhoWeHelpData[0]);
-    const [page, setPage] = useState(1);
+    const [numberOfPages, setNumberOfPages] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
 
     const buttonClickHandler = (e) => {
         if(e.target.id === 'option1') {
@@ -15,13 +17,14 @@ export const HomeWhoWeHelp = ({id}) => {
         } else if(e.target.id === 'option3') {
             setCurrentData(WhoWeHelpData[2]);
         }
-        setPage(1);
+        setCurrentPage(1);
     }
 
-    const pageClickHandler = e => {
-        setPage(parseInt(e.target.id))
-    }
-
+    const recalculateNumberOfPages = useMemo( () => {
+        let calculatedPages = Math.ceil(currentData.list.length/3);
+        calculatedPages = calculatedPages > 1 ? calculatedPages : 0;
+        setNumberOfPages(calculatedPages);
+    }, [currentData] )
 
     return (
         <section className="homeWhoWeHelp" id={id}>
@@ -42,12 +45,12 @@ export const HomeWhoWeHelp = ({id}) => {
                         </div>
                         <div className="results__wrapper">
                             <div className="result">
-                                {currentData.list.filter((e,i) => i >= (page-1)*3 && i <= ((page)*3)-1).map(e => (<HomeWhoWeHelpResult data={e} key={e.name} page={page}/>))}
+                                {currentData.list.filter((e,i) => i >= (currentPage-1)*3 && i <= ((currentPage)*3)-1).map(e => (<HomeWhoWeHelpResult data={e} key={e.name} page={currentPage}/>))}
                             </div>
                         </div>
                         <div className="controller_wrapper">
-                            {Array(Math.ceil(currentData.list.length/3 > 1 ? currentData.list.length/3 : 0)).fill(null).map((e, i) => (
-                                <button onClick={pageClickHandler} className="button button--small" id={i+1} key={i}>{i+1}</button>
+                            {[...Array(numberOfPages)].map((e, i) => (
+                                <HomeWhoWeHelpButton key={i} pageClickHandler={() => {setCurrentPage(i+1)}} i={i}/>
                             ))}
                         </div>
                     </div>
