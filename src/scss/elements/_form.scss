@@ -5,6 +5,15 @@ form {
   text-align: left;
   justify-content: space-between;
 
+  .errorText {
+    font-size: 0.8rem;
+    color: red;
+  }
+
+  .errorBorder {
+    border-color: red;
+  }
+
   label {
     margin-bottom: 2rem;
     font-weight: 600;
@@ -32,6 +41,11 @@ form {
     border: none;
     border-bottom: 1px solid black;
     padding-top: 1rem;
+
+    &.errorBorder {
+      border-color: red;
+    }
+
   }
 
   input.submitInput {
