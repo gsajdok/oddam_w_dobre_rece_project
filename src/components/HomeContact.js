@@ -1,8 +1,87 @@
 import Facebook from "../assets/Facebook.svg";
 import Instagram from "../assets/Instagram.svg";
 import {Decoration} from "./Decoration";
+import {useState} from "react";
 
 export const HomeContact = ({id}) => {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
+    const [success, setSuccess] = useState(-1);
+    const [errors, setErrors] = useState({
+        name: false,
+        email: false,
+        message: false
+    })
+
+    function validateEmail(email)
+    {
+        const re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+
+    const verify = () => {
+        let error = false;
+        setErrors(prevState => ({
+            ...prevState,
+            name: false,
+            message: false,
+            email: false
+        }))
+        if(name.length === 0 || name.indexOf(' ') !== -1) {
+            // console.log("name has a space or theres no name");
+            setErrors(prevState => ({
+                ...prevState,
+                name: true
+            }))
+            error = true;
+        }
+        if(validateEmail(email) === false) {
+            // console.log("incorrect email");
+            setErrors(prevState => ({
+                ...prevState,
+                email: true
+            }))
+            error = true;
+        }
+        if(message.length < 120) {
+            // console.log("message too short");
+            setErrors(prevState => ({
+                ...prevState,
+                message: true
+            }))
+            error = true;
+        }
+        console.log(errors)
+        return !error;
+
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(verify()) {
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    message: message
+                })
+            };
+            fetch('https://fer-api.coderslab.pl/v1/portfolio/contact', requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                    if(data.status === "error") {
+                        setSuccess(0);
+                    } else if(data.status === "success") {
+                        setSuccess(1);
+                    }
+                });
+        }
+    }
+
+
     return (
         <section className="homeContact" id={id}>
             <div className="wrapper">
@@ -10,18 +89,22 @@ export const HomeContact = ({id}) => {
                     <div className="form__wrapper">
                         <h2>Skontaktuj się z nami</h2>
                         <Decoration/>
-                        <form id="form">
+                        {success===1 ? <div className="successText">Wiadomość została wysłana!<br/> Wkrótce się skontaktujemy.</div> : ""}
+                        <form id="form" onSubmit={handleSubmit}>
                             <label className="halfWidth">
                                 Wpisz swoje imię:
-                                <input type="text" placeholder="Krzysztof" className="textInput"/>
+                                <input type="text" placeholder="Krzysztof" className={`textInput ${errors.name ? "errorBorder" : ""}`} value={name} onChange={(e) => setName(e.target.value)}/>
+                                {errors.name ? <span className="errorText">Podane imię jest nieprawidłowe!</span> : ""}
                             </label>
                             <label className="halfWidth">
                                 Wpisz swój email:
-                                <input type="text" placeholder="abc@xyz.pl" className="textInput"/>
+                                <input type="text" placeholder="abc@xyz.pl"className={`textInput ${errors.email ? "errorBorder" : ""}`} value={email} onChange={(e) => setEmail(e.target.value)}/>
+                                {errors.email ? <span className="errorText">Podany email jest nieprawidłowy!</span> : ""}
                             </label>
                             <label>
                                 Wpisz swoją wiadomość:
-                                <textarea rows="5" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."/>
+                                <textarea rows="5" className={`${errors.message ? "errorBorder" : ""}`}value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."/>
+                                {errors.email ? <span className="errorText">Wiadomość musi mieć conajmniej 120 znaków!</span> : ""}
                             </label>
                             <input type="submit" className="submitInput button button--active" value="Wyślij" id="form__submit"/>
                         </form>
