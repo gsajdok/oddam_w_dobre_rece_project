@@ -9,6 +9,7 @@ Link {
 html, body {
   max-width: 100%;
   overflow-x: hidden;
+  overflow-y: overlay;
 }
 
 body {
@@ -30,4 +31,19 @@ h2 {
   color: $colorText;
   font-size: 2.375rem;
   margin: 0;
+}
+
+body::-webkit-scrollbar {
+  width: 1rem;
+}
+
+body::-webkit-scrollbar-track {
+  display: none;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 20rem;
+  border: 0.2rem solid transparent;
+  background-clip: padding-box;
 }
