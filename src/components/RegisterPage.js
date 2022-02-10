@@ -1,7 +1,61 @@
 import {Decoration} from "./Decoration";
 import {Link} from "react-router-dom";
+import {useState} from "react";
 
 export const RegisterPage = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [password2, setPassword2] = useState("");
+    const [errors, setErrors] = useState({
+        email: false,
+        password: false,
+        password2: false
+    })
+
+    function validateEmail(email)
+    {
+        const re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+
+    const verify = () => {
+        let error = false;
+        setErrors(prevState => ({
+            ...prevState,
+            email: false,
+            password: false,
+            password2: false
+        }))
+
+        if(validateEmail(email) === false) {
+            setErrors(prevState => ({
+                ...prevState,
+                email: true
+            }))
+            error = true;
+        }
+        if(password.length < 6) {
+            setErrors(prevState => ({
+                ...prevState,
+                password: true
+            }))
+            error = true;
+        }
+        if(password2.length !== password.length) {
+            setErrors(prevState => ({
+                ...prevState,
+                password2: true
+            }))
+            error = true;
+        }
+        return !error;
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        verify();
+    }
+
     return (
         <section className="account">
             <div className="wrapper">
@@ -10,24 +64,27 @@ export const RegisterPage = () => {
                         <h2>Zarejestruj się</h2>
                         <Decoration/>
                         <div className="accountForm">
-                            <form id="accountForm">
+                            <form id="accountForm" onSubmit={handleSubmit}>
                                 <label className="">
                                     Email
-                                    <input type="text" className="textInput"/>
+                                    <input type="text" className={`textInput ${errors.email ? "errorBorder" : ""}`} value={email} onChange={(e) => setEmail(e.target.value)}/>
+                                    {errors.email ? <span className="errorText">Podany email nie jest prawidłowy!</span> : ""}
                                 </label>
                                 <label className="">
                                     Hasło
-                                    <input type="password" className="textInput"/>
+                                    <input type="password" className={`textInput ${errors.password ? "errorBorder" : ""}`} value={password} onChange={(e) => setPassword(e.target.value)}/>
+                                    {errors.password ? <span className="errorText">Podane hasło jest za krótkie!</span> : ""}
                                 </label>
                                 <label className="">
                                     Powtórz hasło
-                                    <input type="password" className="textInput"/>
+                                    <input type="password" className={`textInput ${errors.password2 ? "errorBorder" : ""}`} value={password2} onChange={(e) => setPassword2(e.target.value)}/>
+                                    {errors.password2 ? <span className="errorText">Podane hasło nie jest takie samo!</span> : ""}
                                 </label>
                             </form>
                         </div>
                         <div className="button__wrapper">
                             <Link to="/logowanie"><span className="button">Zaloguj się</span></Link>
-                            <a className="button button--active">Załóż konto</a>
+                            <input type="submit" form="accountForm" className="button button--active" value="Załóż konto"/>
                         </div>
                     </div>
                 </div>
