@@ -1,7 +1,6 @@
 import HomeHeroImage from '../assets/Home-Hero-Image.jpg';
-import Decoration from '../assets/Decoration.svg';
 import {Link} from "react-router-dom";
-import {Navigation} from "./Navigation";
+import {Decoration} from "./Decoration";
 
 
 export const HomeHeader = ({id}) => {
@@ -9,7 +8,6 @@ export const HomeHeader = ({id}) => {
         <header className="homeHeader" id={id}>
             <div className="wrapper">
                 <div className="content">
-                    <Navigation/>
                     <div className="image">
                         <img src={HomeHeroImage} alt="Home"/>
                     </div>
@@ -17,7 +15,7 @@ export const HomeHeader = ({id}) => {
                         <div className="cta">
                             <h2>Zacznij pomagać! <br/>
                             Oddaj niechciane rzeczy w zaufane ręce</h2>
-                            <img src={Decoration} alt="Decoration" className="decoration"/>
+                            <Decoration/>
                             <div className="button__container">
                                 <Link style={{ textDecoration: 'none' }} to="/logowanie"><span className="button button--big button--uppercase button--active">Oddaj rzeczy</span></Link>
                                 <Link style={{ textDecoration: 'none' }} to="/logowanie"><span className="button button--big button--uppercase button--active">Zorganizuj zbiórkę</span></Link>

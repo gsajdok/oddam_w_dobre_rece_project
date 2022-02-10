@@ -6,13 +6,18 @@
   color: $colorText;
   border: 0.75px solid transparent;
   background-color: transparent;
+  transition: border-color 0.5s, background-color 0.2s ease-out;
 
   &.button--active {
-    border: 0.75px solid #3C3C3C;
+    border-color: $colorText;
   }
 
   &:hover {
-    border: 0.75px solid #3C3C3C;
+    border-color: $colorText;
+  }
+
+  &:active {
+    background-color: lighten($colorText, 50%);
   }
 
 

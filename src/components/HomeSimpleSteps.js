@@ -1,9 +1,9 @@
-import Decoration from "../assets/Decoration.svg";
 import Icon1 from "../assets/Icon-1.svg";
 import Icon2 from "../assets/Icon-2.svg";
 import Icon3 from "../assets/Icon-3.svg";
 import Icon4 from "../assets/Icon-4.svg";
 import {Link} from "react-router-dom";
+import {Decoration} from "./Decoration";
 
 
 export const HomeSimpleSteps = ({id}) => {
@@ -13,7 +13,7 @@ export const HomeSimpleSteps = ({id}) => {
                 <div className="content">
                     <div className="header">
                         <h2>Wystarczą 4 proste kroki</h2>
-                        <img src={Decoration} alt="Decoration" className="decoration"/>
+                        <Decoration/>
                     </div>
                     <div className="fourColumns">
                         <div className="wrapper">

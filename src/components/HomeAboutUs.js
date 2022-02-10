@@ -1,6 +1,6 @@
 import People from "../assets/People.jpg";
-import Decoration from "../assets/Decoration.svg";
 import Signature from "../assets/Signature.svg";
+import {Decoration} from "./Decoration";
 
 
 export const HomeAboutUs = ({id}) => {
@@ -11,7 +11,7 @@ export const HomeAboutUs = ({id}) => {
                     <div className="about__wrapper">
                         <div className="about">
                             <h2>O nas</h2>
-                            <img src={Decoration} alt="Decoration" className="decoration"/>
+                            <Decoration/>
                             <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip.</p>
                             <img src={Signature} alt="Signature" className="signature"/>
                         </div>

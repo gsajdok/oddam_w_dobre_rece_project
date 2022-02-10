@@ -1,7 +1,7 @@
-import Decoration from "../assets/Decoration.svg";
 import {HomeWhoWeHelpResult} from "./HomeWhoWeHelpResult";
 import {WhoWeHelpData} from "../assets/whoWeHelpData";
 import {useEffect, useState} from "react";
+import {Decoration} from "./Decoration";
 
 export const HomeWhoWeHelp = ({id}) => {
     const [currentData, setCurrentData] = useState(WhoWeHelpData[0]);
@@ -29,7 +29,7 @@ export const HomeWhoWeHelp = ({id}) => {
                 <div className="content">
                     <div className="header">
                         <h2>Komu pomagamy?</h2>
-                        <img src={Decoration} alt="Decoration" className="decoration"/>
+                        <Decoration/>
                     </div>
                     <div className="whoWeHelp__functionality">
                         <div className="button__wrapper">
