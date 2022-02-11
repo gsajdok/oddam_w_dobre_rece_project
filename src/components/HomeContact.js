@@ -54,7 +54,6 @@ export const HomeContact = ({id}) => {
         }
         console.log(errors)
         return !error;
-
     }
 
     const handleSubmit = (e) => {
