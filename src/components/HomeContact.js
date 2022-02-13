@@ -103,7 +103,7 @@ export const HomeContact = ({id}) => {
                             <label>
                                 Wpisz swoją wiadomość:
                                 <textarea rows="5" disabled={success === 1} className={`${errors.message && "errorBorder"}`}value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."/>
-                                {errors.email && <span className="errorText">Wiadomość musi mieć conajmniej 120 znaków!</span>}
+                                {errors.message && <span className="errorText">Wiadomość musi mieć conajmniej 120 znaków!</span>}
                             </label>
                             <input type="submit" className="submitInput button button--active" value="Wyślij" id="form__submit"/>
                         </form>
