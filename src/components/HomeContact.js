@@ -2,6 +2,8 @@ import Facebook from "../assets/Facebook.svg";
 import Instagram from "../assets/Instagram.svg";
 import {Decoration} from "./Decoration";
 import {useState} from "react";
+import {validateEmail} from "../helpers/validateEmail";
+import {sendMessage} from "../helpers/api";
 
 export const HomeContact = ({id}) => {
     const [name, setName] = useState("");
@@ -13,12 +15,6 @@ export const HomeContact = ({id}) => {
         email: false,
         message: false
     })
-
-    function validateEmail(email)
-    {
-        const re = /\S+@\S+\.\S+/;
-        return re.test(email);
-    }
 
     const verify = () => {
         let error = false;
@@ -52,31 +48,13 @@ export const HomeContact = ({id}) => {
             }))
             error = true;
         }
-        console.log(errors)
         return !error;
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if(verify()) {
-            const requestOptions = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    name: name,
-                    email: email,
-                    message: message
-                })
-            };
-            fetch('https://fer-api.coderslab.pl/v1/portfolio/contact', requestOptions)
-                .then(response => response.json())
-                .then(data => {
-                    if(data.status === "error") {
-                        setSuccess(0);
-                    } else if(data.status === "success") {
-                        setSuccess(1);
-                    }
-                });
+            sendMessage(setSuccess, {name: name, email: email, message: message})
         }
     }
 

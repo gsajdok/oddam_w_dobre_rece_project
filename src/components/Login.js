@@ -1,6 +1,7 @@
 import {Decoration} from "./Decoration";
 import {Link} from "react-router-dom";
 import {useState} from "react";
+import {validateEmail} from "../helpers/validateEmail";
 
 export const LoginPage = () => {
     const [email, setEmail] = useState("");
@@ -9,12 +10,6 @@ export const LoginPage = () => {
         email: false,
         password: false,
     })
-
-    function validateEmail(email)
-    {
-        const re = /\S+@\S+\.\S+/;
-        return re.test(email);
-    }
 
     const verify = () => {
         let error = false;
