@@ -1,7 +1,9 @@
 import {Decoration} from "./Decoration";
-import {Link} from "react-router-dom";
-import {useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
 import {validateEmail} from "../helpers/validateEmail";
+import { useAuthState } from "react-firebase-hooks/auth";
+import {auth, registerWithEmailAndPassword} from "../helpers/firebase";
 
 export const RegisterPage = () => {
     const [email, setEmail] = useState("");
@@ -12,6 +14,16 @@ export const RegisterPage = () => {
         password: false,
         password2: false
     })
+    const [user, loading, authError] = useAuthState(auth);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (loading) {
+            console.log("loading...")
+            return;
+        }
+        // if (user) navigate("/");
+    }, [user, loading]);
 
     const verify = () => {
         let error = false;
@@ -48,7 +60,10 @@ export const RegisterPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        verify();
+        if(verify()) {
+            registerWithEmailAndPassword(email, password);
+            navigate('/');
+        }
     }
 
     return (

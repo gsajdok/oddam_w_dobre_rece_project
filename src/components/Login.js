@@ -1,7 +1,11 @@
 import {Decoration} from "./Decoration";
-import {Link} from "react-router-dom";
-import {useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
 import {validateEmail} from "../helpers/validateEmail";
+
+import { useAuthState } from "react-firebase-hooks/auth";
+import {auth, logInWithEmailAndPassword} from "../helpers/firebase";
+
 
 export const LoginPage = () => {
     const [email, setEmail] = useState("");
@@ -10,6 +14,16 @@ export const LoginPage = () => {
         email: false,
         password: false,
     })
+    const [user, loading, authError] = useAuthState(auth);
+    const navigate = useNavigate();
+
+
+    useEffect(() => {
+        if (loading) {
+            return;
+        }
+        // if (user) navigate("/");
+    }, [user, loading]);
 
     const verify = () => {
         let error = false;
@@ -38,7 +52,10 @@ export const LoginPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        verify();
+        if(verify()) {
+            logInWithEmailAndPassword (email, password)
+            navigate('/');
+        }
     }
 
 

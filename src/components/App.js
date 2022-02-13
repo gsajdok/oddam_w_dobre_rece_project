@@ -8,8 +8,27 @@ import {scroller} from "react-scroll";
 import {useEffect, useState} from "react";
 import {LogoutPage} from "./Logout";
 
+import {auth, db, logout} from "../helpers/firebase";
+import { query, collection, getDocs, where } from "firebase/firestore";
+import {useAuthState} from "react-firebase-hooks/auth";
+
 function App() {
-    const [scrollTarget, setScrollTarget] = useState(undefined);
+    const [scrollTarget, setScrollTarget] = useState(null);
+    const [user, loading, error] = useAuthState(auth);
+    const [email, setEmail] = useState("");
+    const [isLoggedIn, setLoggedIn] = useState(false);
+
+    const fetchUserEmail = async () => {
+        try {
+            const q = query(collection(db, "users"), where("uid", "==", user?.uid));
+            const doc = await getDocs(q);
+            const data = doc.docs[0].data();
+            setEmail(data.email);
+        } catch (err) {
+            console.error(err);
+            //alert("An error occured while fetching user data");
+        }
+    };
 
     const scrollFunction = (id) => {
         scroller.scrollTo(id, {
@@ -20,18 +39,24 @@ function App() {
     }
 
     useEffect(() => {
-        if(scrollTarget !== undefined) {
+        fetchUserEmail();
+        if(scrollTarget !== null) {
             scroller.scrollTo(scrollTarget, {
                 duration: 500,
                 delay: 0,
                 smooth: "easeInOutQuart"});
-            setScrollTarget(undefined);
+            setScrollTarget(null);
         }
-    })
+        if(user===null) {
+            setLoggedIn(false)
+        } else {
+            setLoggedIn(true);
+        }
+    }, [user, loading, scrollTarget])
 
   return (
     <BrowserRouter>
-        <Navigation scrollFunction={(id) => scrollFunction(id)} setScrollTarget={(id) => setScrollTarget(id)}/>
+        <Navigation isLoggedIn={isLoggedIn} logoutFunction={logout} loggedUserInfo={email} scrollFunction={(id) => scrollFunction(id)} setScrollTarget={(id) => setScrollTarget(id)}/>
         <Routes>
             <Route path="*" element={<NotFound/>}/>
             <Route path="/" element={<Home/>}/>
