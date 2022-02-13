@@ -6,15 +6,19 @@ import {HomeWhoWeHelpButton} from "./HomeWhoWeHelpButton";
 
 export const HomeWhoWeHelp = ({id}) => {
     const [currentData, setCurrentData] = useState(WhoWeHelpData[0]);
+    const [currentDataID, setCurrentDataID] = useState(0)
     const [numberOfPages, setNumberOfPages] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
 
     const buttonClickHandler = (e) => {
         if(e.target.id === 'option1') {
+            setCurrentDataID(0);
             setCurrentData(WhoWeHelpData[0]);
         } else if(e.target.id === 'option2') {
+            setCurrentDataID(1);
             setCurrentData(WhoWeHelpData[1]);
         } else if(e.target.id === 'option3') {
+            setCurrentDataID(2);
             setCurrentData(WhoWeHelpData[2]);
         }
         setCurrentPage(1);
@@ -36,9 +40,9 @@ export const HomeWhoWeHelp = ({id}) => {
                     </div>
                     <div className="whoWeHelp__functionality">
                         <div className="button__wrapper">
-                            <button onClick={buttonClickHandler} className="button" id="option1">Fundacjom</button>
-                            <button onClick={buttonClickHandler} className="button" id="option2">Organizacjom pozarządowym</button>
-                            <button onClick={buttonClickHandler} className="button" id="option3">Lokalnym zbiórkom</button>
+                            <button onClick={buttonClickHandler} className={`button ${currentDataID===0 && "button--active"}`} id="option1">Fundacjom</button>
+                            <button onClick={buttonClickHandler} className={`button ${currentDataID===1 && "button--active"}`} id="option2">Organizacjom pozarządowym</button>
+                            <button onClick={buttonClickHandler} className={`button ${currentDataID===2 && "button--active"}`} id="option3">Lokalnym zbiórkom</button>
                         </div>
                         <div className="description__wrapper">
                             <p>{currentData.description}</p>
@@ -50,7 +54,7 @@ export const HomeWhoWeHelp = ({id}) => {
                         </div>
                         <div className="controller_wrapper">
                             {[...Array(numberOfPages)].map((e, i) => (
-                                <HomeWhoWeHelpButton key={i} pageClickHandler={() => {setCurrentPage(i+1)}} i={i}/>
+                                <HomeWhoWeHelpButton key={i} currentPage={currentPage} pageClickHandler={() => {setCurrentPage(i+1)}} i={i}/>
                             ))}
                         </div>
                     </div>
