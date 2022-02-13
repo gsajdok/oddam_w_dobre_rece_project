@@ -67,18 +67,18 @@ export const RegisterPage = () => {
                             <form id="accountForm" onSubmit={handleSubmit}>
                                 <label className="">
                                     Email
-                                    <input type="text" className={`textInput ${errors.email ? "errorBorder" : ""}`} value={email} onChange={(e) => setEmail(e.target.value)}/>
-                                    {errors.email ? <span className="errorText">Podany email nie jest prawidłowy!</span> : ""}
+                                    <input type="text" className={`textInput ${errors.email && "errorBorder"}`} value={email} onChange={(e) => setEmail(e.target.value)}/>
+                                    {errors.email && <span className="errorText">Podany email nie jest prawidłowy!</span>}
                                 </label>
                                 <label className="">
                                     Hasło
-                                    <input type="password" className={`textInput ${errors.password ? "errorBorder" : ""}`} value={password} onChange={(e) => setPassword(e.target.value)}/>
-                                    {errors.password ? <span className="errorText">Podane hasło jest za krótkie!</span> : ""}
+                                    <input type="password" className={`textInput ${errors.password && "errorBorder"}`} value={password} onChange={(e) => setPassword(e.target.value)}/>
+                                    {errors.password && <span className="errorText">Podane hasło jest za krótkie!</span>}
                                 </label>
                                 <label className="">
                                     Powtórz hasło
-                                    <input type="password" className={`textInput ${errors.password2 ? "errorBorder" : ""}`} value={password2} onChange={(e) => setPassword2(e.target.value)}/>
-                                    {errors.password2 ? <span className="errorText">Podane hasło nie jest takie samo!</span> : ""}
+                                    <input type="password" className={`textInput ${errors.password2 && "errorBorder"}`} value={password2} onChange={(e) => setPassword2(e.target.value)}/>
+                                    {errors.password2 && <span className="errorText">Podane hasło nie jest takie samo!</span>}
                                 </label>
                             </form>
                         </div>
