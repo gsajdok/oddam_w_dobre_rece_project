@@ -4,6 +4,14 @@
   margin: 0 auto;
   z-index: 100;
 
+  .welcome {
+    margin: 0;
+    padding: 0;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+  }
+
   .nav__container {
     margin-top: 2.875rem;
     position: absolute;
