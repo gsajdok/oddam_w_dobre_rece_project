@@ -1,3 +1,4 @@
+import {firebaseConfig} from "./firebase_config";
 import { initializeApp } from "firebase/app";
 import {
     getAuth,
@@ -13,16 +14,6 @@ import {
     where,
     addDoc,
 } from "firebase/firestore";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyBsM2xqlPbM7L2TN6sARF4_TwMeyov5K5U",
-    authDomain: "oddamwdobrerece-4130a.firebaseapp.com",
-    projectId: "oddamwdobrerece-4130a",
-    storageBucket: "oddamwdobrerece-4130a.appspot.com",
-    messagingSenderId: "60678206308",
-    appId: "1:60678206308:web:9e750d7d75c8b71dd44071",
-    measurementId: "G-HV7EECWQXR"
-};
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
