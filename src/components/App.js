@@ -4,9 +4,9 @@ import {NotFound} from "./NotFound";
 import {LoginPage} from "./Login";
 import {RegisterPage} from "./RegisterPage";
 import {Navigation} from "./Navigation";
-import {scroller} from "react-scroll";
 import {useEffect, useState} from "react";
 import {LogoutPage} from "./Logout";
+import {scrollFunction} from "../helpers/scrollFunction";
 
 import {auth, db, logout} from "../helpers/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
@@ -30,21 +30,10 @@ function App() {
         }
     };
 
-    const scrollFunction = (id) => {
-        scroller.scrollTo(id, {
-            duration: 500,
-            delay: 0,
-            smooth: "easeInOutQuart"}
-        )
-    }
-
     useEffect(() => {
         fetchUserEmail();
         if(scrollTarget !== null) {
-            scroller.scrollTo(scrollTarget, {
-                duration: 500,
-                delay: 0,
-                smooth: "easeInOutQuart"});
+            scrollFunction(scrollTarget);
             setScrollTarget(null);
         }
         if(user===null) {
