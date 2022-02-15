@@ -1,8 +1,12 @@
 import {Link, useNavigate, useLocation} from "react-router-dom";
+import {useContext} from "react";
+import {UserAuthContext} from "../contextAPI/userAuthContext";
 
-export const Navigation = ({isLoggedIn, logoutFunction, loggedUserInfo, scrollFunction, setScrollTarget}) => {
+
+export const Navigation = ({logoutFunction, scrollFunction, setScrollTarget}) => {
     let location = useLocation();
     const navigate = useNavigate();
+    const [userData] = useContext(UserAuthContext);
 
     const onClickHandler = () => {
         logoutFunction();
@@ -21,8 +25,8 @@ export const Navigation = ({isLoggedIn, logoutFunction, loggedUserInfo, scrollFu
         <div className="nav__wrapper">
             <div className="nav__container">
                 <nav className="account">
-                    {isLoggedIn ? <>
-                        <span className="welcome">Cześć {loggedUserInfo}!</span>
+                    {userData!==null ? <>
+                        <span className="welcome">Cześć {userData.email}!</span>
                         <Link to="/oddaj-rzeczy"><span className="button button--small button--yellow">Oddaj rzeczy</span></Link>
                         <Link to="/wylogowano"><span className="button button--small" onClick={onClickHandler}>Wyloguj</span></Link>
                         </>
