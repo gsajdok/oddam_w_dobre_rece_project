@@ -8,6 +8,9 @@ bootcamp
 - React Router
 - React Scroll
 - SCSS
+- Firebase
+- Firebase Auth
+- React Firebase Hooks
 
 ## Usage
 
