@@ -1,7 +1,7 @@
 import {Decoration} from "./Decoration";
 import {Link, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {validateEmail} from "../helpers/validateEmail";
+import {verifyLogin} from "../helpers/verifyFunctions";
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import {auth, logInWithEmailAndPassword} from "../helpers/firebase";
@@ -21,38 +21,15 @@ export const LoginPage = () => {
     useEffect(() => {
         if (loading) {
             return;
+            //TODO: add a loading screen
         }
         // if (user) navigate("/");
+        //TODO: don't let logged in users reach this page
     }, [user, loading]);
-
-    const verify = () => {
-        let error = false;
-        setErrors(prevState => ({
-            ...prevState,
-            email: false,
-            password: false
-        }))
-
-        if(validateEmail(email) === false) {
-            setErrors(prevState => ({
-                ...prevState,
-                email: true
-            }))
-            error = true;
-        }
-        if(password.length < 6) {
-            setErrors(prevState => ({
-                ...prevState,
-                password: true
-            }))
-            error = true;
-        }
-        return !error;
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(verify()) {
+        if(verifyLogin(setErrors, email, password)) {
             logInWithEmailAndPassword (email, password)
             navigate('/');
         }

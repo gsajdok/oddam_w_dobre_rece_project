@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useState} from "react";
+import {useMemo, useState} from "react";
 
 export const HomeWhoWeHelpButton = ({pageClickHandler, i, currentPage}) => {
     const [isActive, setActive] = useState(false);
@@ -12,7 +12,7 @@ export const HomeWhoWeHelpButton = ({pageClickHandler, i, currentPage}) => {
         if(currentPage === i+1) {
             setActive(true);
         }
-    }, [currentPage])
+    }, [currentPage, i])
 
     return (
         <>

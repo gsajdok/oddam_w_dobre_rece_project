@@ -1,6 +1,6 @@
 import {HomeWhoWeHelpResult} from "./HomeWhoWeHelpResult";
 import {WhoWeHelpData} from "../assets/whoWeHelpData";
-import {useEffect, useMemo, useState} from "react";
+import {useMemo, useState} from "react";
 import {Decoration} from "./Decoration";
 import {HomeWhoWeHelpButton} from "./HomeWhoWeHelpButton";
 
@@ -24,7 +24,7 @@ export const HomeWhoWeHelp = ({id}) => {
         setCurrentPage(1);
     }
 
-    const recalculateNumberOfPages = useMemo( () => {
+    useMemo( () => {
         let calculatedPages = Math.ceil(currentData.list.length/3);
         calculatedPages = calculatedPages > 1 ? calculatedPages : 0;
         setNumberOfPages(calculatedPages);

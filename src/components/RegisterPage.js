@@ -1,9 +1,9 @@
 import {Decoration} from "./Decoration";
 import {Link, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {validateEmail} from "../helpers/validateEmail";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {auth, registerWithEmailAndPassword} from "../helpers/firebase";
+import {verifyRegister} from "../helpers/verifyFunctions";
 
 export const RegisterPage = () => {
     const [email, setEmail] = useState("");
@@ -19,50 +19,19 @@ export const RegisterPage = () => {
 
     useEffect(() => {
         if (loading) {
-            console.log("loading...")
             return;
+            //TODO: add a loading screen
         }
         // if (user) navigate("/");
+        //TODO: don't let logged in users reach this page
     }, [user, loading]);
-
-    const verify = () => {
-        let error = false;
-        setErrors(prevState => ({
-            ...prevState,
-            email: false,
-            password: false,
-            password2: false
-        }))
-
-        if(validateEmail(email) === false) {
-            setErrors(prevState => ({
-                ...prevState,
-                email: true
-            }))
-            error = true;
-        }
-        if(password.length < 6) {
-            setErrors(prevState => ({
-                ...prevState,
-                password: true
-            }))
-            error = true;
-        }
-        if(password2.length !== password.length) {
-            setErrors(prevState => ({
-                ...prevState,
-                password2: true
-            }))
-            error = true;
-        }
-        return !error;
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(verify()) {
+        if(verifyRegister(setErrors, email, password, password2)) {
             registerWithEmailAndPassword(email, password);
             navigate('/');
+            //TODO: Check if the registration was successful before navigating to dashboard, show errors otherwise
         }
     }
 

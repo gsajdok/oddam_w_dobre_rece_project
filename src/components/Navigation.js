@@ -1,6 +1,4 @@
 import {Link, useNavigate, useLocation} from "react-router-dom";
-import {Link as ScrollLink, scroller} from "react-scroll";
-import {useEffect, useState} from "react";
 
 export const Navigation = ({isLoggedIn, logoutFunction, loggedUserInfo, scrollFunction, setScrollTarget}) => {
     let location = useLocation();
@@ -36,11 +34,11 @@ export const Navigation = ({isLoggedIn, logoutFunction, loggedUserInfo, scrollFu
                     }
                 </nav>
                 <nav className="home">
-                    <a className={`button ${location.pathname==="/" && `button--active`}`} onClick={() => scrollToID("header")}>Start</a>
-                    <a className="button" onClick={() => scrollToID("threeColumns")}>O co chodzi?</a>
-                    <a className="button" onClick={() => scrollToID("aboutUs")}>O nas</a>
-                    <a className="button" onClick={() => scrollToID("whoWeHelp")}>Fundacje i organizacje</a>
-                   <a className="button" onClick={() => scrollToID("contact")}>Kontakt</a>
+                    <button className={`button ${location.pathname==="/" && `button--active`}`} onClick={() => scrollToID("header")}>Start</button>
+                    <button className="button" onClick={() => scrollToID("threeColumns")}>O co chodzi?</button>
+                    <button className="button" onClick={() => scrollToID("aboutUs")}>O nas</button>
+                    <button className="button" onClick={() => scrollToID("whoWeHelp")}>Fundacje i organizacje</button>
+                    <button className="button" onClick={() => scrollToID("contact")}>Kontakt</button>
                 </nav>
             </div>
         </div>
