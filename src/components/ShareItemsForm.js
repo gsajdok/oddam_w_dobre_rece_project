@@ -1,15 +1,20 @@
 import {ShareItemsContext} from "../contextAPI/shareItemsContext";
 import {useContext, useMemo, useState} from "react";
+import {StepOne} from "./ShareItemsFormSteps/StepOne";
+import {StepTwo} from "./ShareItemsFormSteps/StepTwo";
 
 export const ShareItemsForm = () => {
-    const [formData, setFormData, step, setStep] = useContext(ShareItemsContext);
+    const {step, setStep, formData} = useContext(ShareItemsContext);
 
-    const onChangeValue = (e) => {
-        console.log(e.target.value)
-        setFormData(prevState => ({
-            ...prevState,
-            type: parseInt(e.target.value)
-        }));
+    const stepHandlerSwitch = (id) => {
+        switch(id) {
+            case 1:
+                return <StepOne/>
+            case 2:
+                return <StepTwo/>
+            default:
+                return;
+        }
     }
 
     return (
@@ -19,16 +24,7 @@ export const ShareItemsForm = () => {
                     <div className="stepCountWrapper">
                         <span>Krok {step}/4</span>
                     </div>
-                    <div className="formWrapper">
-                        <h2>Zaznacz co chcesz oddać:</h2>
-                        <form id="form">
-                            <label><input type="radio" name="type" value="1" checked={formData.type===1} onChange={onChangeValue}/>ubrania, które nadają się do ponownego użycia</label>
-                            <label><input type="radio" name="type" value="2" checked={formData.type===2} onChange={onChangeValue}/>ubrania do wyrzucenia</label>
-                            <label><input type="radio" name="type" value="3" checked={formData.type===3} onChange={onChangeValue}/>zabawki</label>
-                            <label><input type="radio" name="type" value="4" checked={formData.type===4} onChange={onChangeValue}/>książki</label>
-                            <label><input type="radio" name="type" value="5" checked={formData.type===5} onChange={onChangeValue}/>inne</label>
-                        </form>
-                    </div>
+                    {stepHandlerSwitch(step)}
                     <div className="buttonWrapper">
                         {step>1 && <button onClick={() => setStep(step - 1)} className="button button--active">Wstecz</button>}
                         {step<4 && <button onClick={() => setStep(step + 1)} className="button button--active">Dalej</button>}

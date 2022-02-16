@@ -23,7 +23,7 @@ export const ShareItemsProvider = (props) => {
     const [step, setStep] = useState(1);
 
     return (
-        <ShareItemsContext.Provider value={[formData, setFormData, step, setStep]}>
+        <ShareItemsContext.Provider value={{formData, setFormData, step, setStep}}>
             {props.children}
         </ShareItemsContext.Provider>
     )
