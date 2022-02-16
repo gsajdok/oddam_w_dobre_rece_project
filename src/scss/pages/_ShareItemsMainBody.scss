@@ -37,8 +37,14 @@
         }
       }
 
-      .buttonWrapper {
+      .errorWrapper {
         margin-top: auto;
+        font-size: 2rem;
+        color: red;
+        margin-bottom: 2rem;
+      }
+
+      .buttonWrapper {
         display: flex;
         gap: 1rem;
       }

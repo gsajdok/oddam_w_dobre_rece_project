@@ -5,7 +5,6 @@ export const StepOne = () => {
     const {formData, setFormData} = useContext(ShareItemsContext);
 
     const onChangeValue = (e) => {
-        console.log(e.target.value)
         setFormData(prevState => ({
             ...prevState,
             type: parseInt(e.target.value)

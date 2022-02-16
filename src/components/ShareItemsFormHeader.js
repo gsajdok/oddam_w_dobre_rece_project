@@ -18,6 +18,7 @@ export const ShareItemsFormHeader = () => {
                 return;
         }
     }
+
     return (
         <section className="shareFormHeader">
             <div className="wrapper">
