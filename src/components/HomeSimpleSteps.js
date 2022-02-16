@@ -4,9 +4,12 @@ import Icon3 from "../assets/Icon-3.svg";
 import Icon4 from "../assets/Icon-4.svg";
 import {Link} from "react-router-dom";
 import {Decoration} from "./Decoration";
+import {useContext} from "react";
+import {UserAuthContext} from "../contextAPI/userAuthContext";
 
 
 export const HomeSimpleSteps = ({id}) => {
+    const [userData] = useContext(UserAuthContext);
     return (
         <section className="homeSimpleSteps" id={id}>
             <div className="wrapper">
@@ -44,7 +47,7 @@ export const HomeSimpleSteps = ({id}) => {
                         </div>
                     </div>
                     <div className="button__container">
-                        <Link style={{ textDecoration: 'none' }} to="/logowanie"><span className="button button--big button--uppercase button--active">Oddaj rzeczy</span></Link>
+                        <Link style={{ textDecoration: 'none' }} to={`${userData===null ? "/logowanie" : "/oddaj-rzeczy"}`}><span className="button button--big button--uppercase button--active">Oddaj rzeczy</span></Link>
                     </div>
                 </div>
             </div>

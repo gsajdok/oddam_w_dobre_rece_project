@@ -1,0 +1,28 @@
+.contact__transition-exit {
+  opacity: 1;
+  max-height: 50rem;
+  transition: max-height 1s, opacity 1s;
+}
+.contact__transition-exit-active {
+  opacity: 0;
+  max-height: 0;
+}
+.contact__transition-exit-done {
+  opacity: 0;
+  max-height: 0;
+}
+
+.whoWeHelp__transition-enter {
+  opacity: 0.01;
+}
+.whoWeHelp__transition-enter.whoWeHelp__transition-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.whoWeHelp__transition-leave {
+  opacity: 1;
+}
+.whoWeHelp__transition-leave.whoWeHelp__transition-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}

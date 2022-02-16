@@ -11,6 +11,7 @@ bootcamp
 - Firebase
 - Firebase Auth
 - React Firebase Hooks
+- React Transition Groups
 
 ## Usage
 

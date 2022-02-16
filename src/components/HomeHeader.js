@@ -1,9 +1,13 @@
 import HomeHeroImage from '../assets/Home-Hero-Image.jpg';
 import {Link} from "react-router-dom";
 import {Decoration} from "./Decoration";
+import {useContext} from "react";
+import {UserAuthContext} from "../contextAPI/userAuthContext";
 
 
 export const HomeHeader = ({id}) => {
+    const [userData] = useContext(UserAuthContext);
+
     return (
         <header className="homeHeader" id={id}>
             <div className="wrapper">
@@ -17,8 +21,8 @@ export const HomeHeader = ({id}) => {
                             Oddaj niechciane rzeczy w zaufane ręce</h2>
                             <Decoration/>
                             <div className="button__container">
-                                <Link style={{ textDecoration: 'none' }} to="/logowanie"><span className="button button--big button--uppercase button--active">Oddaj rzeczy</span></Link>
-                                <Link style={{ textDecoration: 'none' }} to="/logowanie"><span className="button button--big button--uppercase button--active">Zorganizuj zbiórkę</span></Link>
+                                <Link style={{ textDecoration: 'none' }} to={`${userData===null ? "/logowanie" : "/oddaj-rzeczy"}`}><span className="button button--big button--uppercase button--active">Oddaj rzeczy</span></Link>
+                                <Link style={{ textDecoration: 'none' }} to={`${userData===null ? "/logowanie" : "/zorganizuj-zbiorke"}`}><span className="button button--big button--uppercase button--active">Zorganizuj zbiórkę</span></Link>
                             </div>
                         </div>
                     </div>
