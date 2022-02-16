@@ -1,4 +1,4 @@
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import {Home} from "./Home";
 import {NotFound} from "./NotFound";
 import {LoginPage} from "./Login";
@@ -37,11 +37,12 @@ function App() {
         <BrowserRouter>
             <Navigation logoutFunction={logout} scrollFunction={(id) => scrollFunction(id)} setScrollTarget={(id) => setScrollTarget(id)}/>
             <Routes>
-                <Route path="*" element={<NotFound/>}/>
+                <Route path="*" element={<Navigate replace to="/404"/>}/>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/logowanie" element={<LoginPage/>}/>
                 <Route path="/rejestracja" element={<RegisterPage/>}/>
                 <Route path="/wylogowano" element={<LogoutPage/>}/>
+                <Route path="/404" element={<NotFound/>}/>
             </Routes>
         </BrowserRouter>
   );

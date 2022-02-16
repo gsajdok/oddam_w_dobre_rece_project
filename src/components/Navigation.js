@@ -1,5 +1,5 @@
 import {Link, useNavigate, useLocation} from "react-router-dom";
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 import {UserAuthContext} from "../contextAPI/userAuthContext";
 
 
@@ -19,6 +19,10 @@ export const Navigation = ({logoutFunction, scrollFunction, setScrollTarget}) =>
             setScrollTarget(id);
             navigate("/")
         }
+    }
+
+    if (location.pathname === "/404") {
+        return <div/>
     }
 
     return (

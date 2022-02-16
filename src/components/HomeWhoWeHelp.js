@@ -3,6 +3,7 @@ import {WhoWeHelpData} from "../assets/whoWeHelpData";
 import {useMemo, useState} from "react";
 import {Decoration} from "./Decoration";
 import {HomeWhoWeHelpButton} from "./HomeWhoWeHelpButton";
+import {CSSTransition} from "react-transition-group";
 
 export const HomeWhoWeHelp = ({id}) => {
     const [currentData, setCurrentData] = useState(WhoWeHelpData[0]);
@@ -49,7 +50,7 @@ export const HomeWhoWeHelp = ({id}) => {
                         </div>
                         <div className="results__wrapper">
                             <div className="result">
-                                {currentData.list.filter((e,i) => i >= (currentPage-1)*3 && i <= ((currentPage)*3)-1).map(e => (<HomeWhoWeHelpResult data={e} key={e.name} page={currentPage}/>))}
+                                    {currentData.list.filter((e,i) => i >= (currentPage-1)*3 && i <= ((currentPage)*3)-1).map(e => (<HomeWhoWeHelpResult data={e} key={e.name} page={currentPage}/>))}
                             </div>
                         </div>
                         <div className="controller_wrapper">
