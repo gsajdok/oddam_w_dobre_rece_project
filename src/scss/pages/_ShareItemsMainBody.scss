@@ -1,0 +1,67 @@
+.shareForm {
+  padding: 0 5rem;
+  height: 55rem;
+  background-image: url("../../assets/Background-Form.jpg");
+
+  .wrapper {
+    max-width: 100rem;
+    margin: 0 auto;
+    padding: 5rem 0;
+    height: 100%;
+
+    .content {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+
+      .stepCountWrapper {
+        span {
+          font-size: 1.5rem;
+          font-weight: 300;
+        }
+      }
+
+      .formWrapper {
+        h2 {
+          font-size: 2.25rem;
+          padding-top: 4rem;
+          padding-bottom: 2rem;
+        }
+
+        label {
+          font-size: 1.5rem;
+          font-weight: 300;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+        }
+      }
+
+      .buttonWrapper {
+        margin-top: auto;
+        display: flex;
+        gap: 1rem;
+      }
+    }
+  }
+}
+
+.shareFormHeader {
+  padding: 0 5rem;
+  height: 12rem;
+  background-color: $colorAccent;
+
+  .wrapper {
+    max-width: 100rem;
+    margin: 0 auto;
+    height: 100%;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+      height: 100%;
+    }
+  }
+}

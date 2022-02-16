@@ -1,0 +1,91 @@
+.sharedItemsHeader {
+  padding: 0 5rem;
+
+  .wrapper {
+    max-width: 100rem;
+    margin: 0 auto;
+
+    .content {
+      height: 60.1875rem;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      .image {
+        flex-basis: 50%;
+        flex-grow: 0;
+        position: relative;
+        height: 100%;
+        img {
+          position: absolute;
+          right: 0;
+          top: 0;
+          display: inline-block;
+          height: 100%;
+        }
+      }
+
+      .cta__wrapper {
+        min-width: 44.125rem;
+      }
+
+      .cta {
+        flex-basis: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        span {
+          font-family: $font-base;
+          font-size: 2.5rem;
+          font-weight: 300;
+          margin-bottom: 4rem;
+        }
+
+        .steps__container {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          width: 100%;
+          gap: 2rem;
+
+          .step {
+            width: 8.5rem;
+            height: 8.5rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+
+            span {
+              margin: 0;
+            }
+
+            p {
+              font-size: 1.375rem;
+              font-weight: 300;
+              //max-width: 4.875rem;
+              margin: 0;
+            }
+
+            &:after{
+              content: "";
+              display: block;
+              position: absolute;
+              border: 1px solid black;
+              top: 0;
+              transform: rotate(45deg);
+              height: 100%;
+              width: 100%;
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
