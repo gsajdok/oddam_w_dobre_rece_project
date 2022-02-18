@@ -40,6 +40,10 @@ export const ShareItemsForm = () => {
                 setError(true)
                 return false;
             }
+            if(formData.helpGroups.every((e) => e===false)) {
+                setError(true)
+                return false;
+            }
         }
         setStep(step+1);
     }
