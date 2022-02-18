@@ -46,4 +46,8 @@
   &.button--uppercase {
     text-transform: uppercase;
   }
+
+  &.button--toggled {
+    background-color: $colorAccent;
+  }
 }

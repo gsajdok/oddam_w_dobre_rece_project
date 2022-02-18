@@ -2,6 +2,7 @@ import {ShareItemsContext} from "../contextAPI/shareItemsContext";
 import {useContext, useMemo, useState} from "react";
 import {StepOne} from "./ShareItemsFormSteps/StepOne";
 import {StepTwo} from "./ShareItemsFormSteps/StepTwo";
+import {StepThree} from "./ShareItemsFormSteps/StepThree";
 
 export const ShareItemsForm = () => {
     const {step, setStep, formData} = useContext(ShareItemsContext);
@@ -13,6 +14,8 @@ export const ShareItemsForm = () => {
                 return <StepOne/>
             case 2:
                 return <StepTwo/>
+            case 3:
+                return <StepThree/>
             default:
                 return;
         }
@@ -28,6 +31,12 @@ export const ShareItemsForm = () => {
         }
         if(step===2) {
             if(formData.amount===0) {
+                setError(true)
+                return false;
+            }
+        }
+        if(step===3) {
+            if(formData.localisation===0) {
                 setError(true)
                 return false;
             }
