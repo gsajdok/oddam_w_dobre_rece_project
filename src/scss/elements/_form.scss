@@ -61,28 +61,4 @@ form {
   [disabled] {
     cursor: not-allowed;
   }
-
-  input[type="radio"] {
-    appearance: none;
-    font: inherit;
-    color: black;
-    width: 2.5rem;
-    height: 2.5rem;
-    border: 1px solid black;
-    margin: 0 2rem 0 0;
-    transition: background-color 0.2s;
-
-    &:checked {
-      background-color: $colorAccent;
-    }
-
-  }
-
-  select {
-    margin-left: 3rem;
-    background-color: transparent;
-    border-color: #3C3C3C;
-    width: 18.75rem;
-    padding: 0 2rem;
-  }
 }

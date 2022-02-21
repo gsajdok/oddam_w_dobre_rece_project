@@ -10,7 +10,7 @@
     height: 100%;
 
     .content {
-      width: 50%;
+      max-width: 50rem;
       display: flex;
       height: 100%;
       flex-direction: column;
@@ -32,15 +32,12 @@
         label {
           font-size: 1.5rem;
           font-weight: 300;
-          display: flex;
-          justify-content: flex-start;
-          align-items: center;
         }
       }
 
       .errorWrapper {
         margin-top: auto;
-        font-size: 2rem;
+        font-size: 1.5rem;
         color: red;
         margin-bottom: 2rem;
       }
@@ -69,29 +66,6 @@
       justify-content: center;
       gap: 1rem;
       height: 100%;
-    }
-  }
-}
-
-.helpGroupsForm {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-
-  .helpGroupsButtons {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 2rem;
-
-    label.formButton {
-      @extend .button;
-      @extend .button--active;
-      display: inline-block;
-
-      input {
-        appearance: none;
-      }
     }
   }
 }

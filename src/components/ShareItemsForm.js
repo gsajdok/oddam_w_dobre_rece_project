@@ -4,21 +4,24 @@ import {StepOne} from "./ShareItemsFormSteps/StepOne";
 import {StepTwo} from "./ShareItemsFormSteps/StepTwo";
 import {StepThree} from "./ShareItemsFormSteps/StepThree";
 import {StepFour} from "./ShareItemsFormSteps/StepFour";
-import {UserAuthContext} from "../contextAPI/userAuthContext";
 import { get, getDatabase, ref, set } from "firebase/database";
+import {useAuthState} from "react-firebase-hooks/auth";
+import {auth} from "../helpers/firebase";
+import {Summary} from "./ShareItemsFormSteps/Summary";
+import {ThankYou} from "./ShareItemsFormSteps/ThankYou";
 
 
 export const ShareItemsForm = () => {
     const {step, setStep, formData} = useContext(ShareItemsContext);
-    const [error, setError] = useState(false)
-    const [userData] = useContext(UserAuthContext);
+    const [user] = useAuthState(auth)
 
-    const sendFormData = () => {
+    const sendData = () => {
         const db = getDatabase();
-        set( ref( db, 'submittedForms/' + userData.uid + '/' + Date.now()), {
+        set( ref( db, 'submittedForms/' + user.uid + '/' + Date.now()), {
             formData
         }).then(() => {
             console.log("Success!")
+            setStep(6);
         }).catch((error) => {
             console.log(error)
         })
@@ -35,46 +38,26 @@ export const ShareItemsForm = () => {
                 return <StepThree/>
             case 4:
                 return <StepFour/>
+            case 5:
+                return <Summary/>
+            case 6:
+                return <ThankYou/>
             default:
                 return;
         }
     }
 
     const nextButtonHandler = () => {
-        // setError(false)
-        // if(step===1) {
-        //     if(formData.type===0) {
-        //         setError(true)
-        //         return false;
-        //     }
-        // }
-        // if(step===2) {
-        //     if(formData.amount===0) {
-        //         setError(true)
-        //         return false;
-        //     }
-        // }
-        // if(step===3) {
-        //     if(formData.localisation===0) {
-        //         setError(true)
-        //         return false;
-        //     }
-        //     if(formData.helpGroups.every((e) => e===false)) {
-        //         setError(true)
-        //         return false;
-        //     }
-        // }
         setStep(step+1);
     }
 
     const prevButtonHandler = () => {
-        setError(false)
         setStep(step-1);
     }
 
     useMemo(() => {
-        if(step>6) {setStep(6)};
-        if(step<1) {setStep(1)};
+        if(step>6) {setStep(6)}
+        if(step<1) {setStep(1)}
     }, [step])
 
     return (
@@ -86,14 +69,11 @@ export const ShareItemsForm = () => {
                     </div>
                     {stepHandlerSwitch(step)}
                     <div className="errorWrapper">
-                        {error && "Prosze wypełnić wszystkie wymagane pola!"}
                     </div>
                     <div className="buttonWrapper">
-                        {step>1 && <button onClick={prevButtonHandler} className="button button--active">Wstecz</button>}
-                        {step<6 && <button onClick={nextButtonHandler} className="button button--active">Dalej</button>}
-                        <button onClick={() => console.log(formData)} className="button button--active">Show form data</button>
-                        <button onClick={() => console.log(userData)} className="button button--active">Show user data</button>
-                        <button onClick={sendFormData} className="button button--active">send what you have to the server</button>
+                        {step>1 && step<=5 && <button onClick={prevButtonHandler} className="button button--active">Wstecz</button>}
+                        {step<5 && <button onClick={nextButtonHandler} className="button button--active">Dalej</button>}
+                        {step===5 && <button onClick={sendData} className="button button--active">Potwierdzam</button>}
                     </div>
                 </div>
             </div>

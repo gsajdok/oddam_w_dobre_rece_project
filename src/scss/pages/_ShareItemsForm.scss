@@ -1,0 +1,84 @@
+.radioForm {
+
+  input[type="radio"] {
+    appearance: none;
+    font: inherit;
+    color: black;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid black;
+    margin: 0 2rem 0 0;
+    transition: background-color 0.2s;
+
+    &:checked {
+      background-color: $colorAccent;
+    }
+  }
+}
+
+.selectForm {
+
+  select {
+    margin-left: 3rem;
+    background-color: transparent;
+    border-color: #3C3C3C;
+    width: 18.75rem;
+    padding: 0 2rem;
+  }
+}
+
+.helpGroupsForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-bottom: 2rem;
+
+  .helpGroupsButtons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+}
+
+.customGroupForm {
+  input {
+    min-width: 70%;
+    background-color: transparent;
+    border: 1px solid $colorDarkAccent;
+    height: 2rem;
+  }
+}
+
+.twoColumns {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+
+  .column {
+    min-width: 50%;
+  }
+
+  p {
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      padding-right: 2rem;
+    }
+
+  }
+
+  label {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    input, textarea {
+      margin-left: 1rem;
+      width: 70%;
+      background-color: transparent;
+      border: 1px solid $colorDarkAccent;
+    }
+  }
+}
