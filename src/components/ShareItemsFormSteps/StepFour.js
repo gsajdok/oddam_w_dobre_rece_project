@@ -4,99 +4,48 @@ import {ShareItemsContext} from "../../contextAPI/shareItemsContext";
 export const StepFour = () => {
     const {formData, setFormData} = useContext(ShareItemsContext);
 
+    const onChangeHandlerAddress = (e) => {
+        setFormData({
+            ...formData,
+            address: {
+                ...formData.address,
+                [e.target.name]: e.target.value
+            }
+        })
+    }
 
-    const onChangeHandler = (e) => {
-        switch(e.target.id) {
-            case "street":
-                setFormData(prevState => ({
-                    ...prevState,
-                    address: {
-                        ...prevState.address,
-                        street: e.target.value
-                    }
-                }));
-                break;
-            case "city":
-                setFormData(prevState => ({
-                    ...prevState,
-                    address: {
-                        ...prevState.address,
-                        city: e.target.value
-                    }
-                }));
-                break;
-            case "postalCode":
-                setFormData(prevState => ({
-                    ...prevState,
-                    address: {
-                        ...prevState.address,
-                        postalCode: e.target.value
-                    }
-                }));
-                break;
-            case "phoneNumber":
-                setFormData(prevState => ({
-                    ...prevState,
-                    address: {
-                        ...prevState.address,
-                        phoneNumber: e.target.value
-                    }
-                }));
-                break;
-            case "date":
-                setFormData(prevState => ({
-                    ...prevState,
-                    collection: {
-                        ...prevState.collection,
-                        date: e.target.value
-                    }
-                }));
-                break;
-            case "hour":
-                setFormData(prevState => ({
-                    ...prevState,
-                    collection: {
-                        ...prevState.collection,
-                        hour: e.target.value
-                    }
-                }));
-                break;
-            case "comments":
-                setFormData(prevState => ({
-                    ...prevState,
-                    collection: {
-                        ...prevState.collection,
-                        comments: e.target.value
-                    }
-                }));
-                break;
-            default:
-                return;
-        }
+    const onChangeHandlercollection = (e) => {
+        setFormData({
+            ...formData,
+            collection: {
+                ...formData.collection,
+                [e.target.name]: e.target.value
+            }
+        })
     }
 
     return (
         <div className="formWrapper">
             <h2>Podaj adres oraz termin odbioru rzeczy przez kuriera</h2>
             <div className="twoColumns">
-                <div className="column" style={{display: "flex", flexDirection: "row"}}>
+                <div className="column">
                     <h3>Adres odbioru:</h3>
                     <div className="addressForm">
                         <form>
-                            <label>Ulica<input type="text" id="street" value={formData.address.street} onChange={onChangeHandler}/></label>
-                            <label>Miasto<input type="text" id="city" value={formData.address.city} onChange={onChangeHandler}/></label>
-                            <label>Kod pocztowy<input type="text" id="postalCode" value={formData.address.postalCode} onChange={onChangeHandler}/></label>
-                            <label>Numer telefonu<input type="text" id="phoneNumber" value={formData.address.phoneNumber} onChange={onChangeHandler}/></label>
+                            <label>Ulica<input type="text" name="street" value={formData.address.street} onChange={onChangeHandlerAddress}/></label>
+                            <label>Miasto<input type="text" name="city" value={formData.address.city} onChange={onChangeHandlerAddress}/></label>
+                            <label>Kod pocztowy<input type="text" name="postalCode" value={formData.address.postalCode} onChange={onChangeHandlerAddress}/></label>
+                            <label>Numer telefonu<input type="text" name="phoneNumber" value={formData.address.phoneNumber} onChange={onChangeHandlerAddress}/></label>
                         </form>
                     </div>
                 </div>
                 <div className="column">
                     <h3>Termin odbioru:</h3>
-                    <div className="contactForm">
+                    <div className="collectionForm">
                         <form>
-                            <label>Data<input type="date" id="date" value={formData.collection.date} onChange={onChangeHandler}/></label>
-                            <label>Godzina<input type="time" id="hour" value={formData.collection.hour} onChange={onChangeHandler}/></label>
-                            <label>Uwagi do kuriera:<input type="comments" id="comments" value={formData.collection.comments} onChange={onChangeHandler}/></label>
+                            <label>Data<input type="date" name="date" value={formData.collection.date} onChange={onChangeHandlercollection}/></label>
+                            <label>Godzina<input type="time" name="hour" value={formData.collection.hour} onChange={onChangeHandlercollection}/></label>
+                            <label>Uwagi do kuriera:<textarea name="comments" value={formData.collection.comments} onChange={onChangeHandlercollection}/></label>
                         </form>
                     </div>
                 </div>

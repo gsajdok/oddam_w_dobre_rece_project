@@ -49,3 +49,23 @@
     height: 2rem;
   }
 }
+
+.twoColumns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+
+  label {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    input, textarea {
+      margin-left: 1rem;
+      width: 70%;
+      background-color: transparent;
+      border: 1px solid $colorDarkAccent;
+    }
+  }
+}
