@@ -19,7 +19,8 @@ export const ShareItemsFormHeader = () => {
         }
     }
 
-    return (
+    return (<>
+        {step<5 &&
         <section className="shareFormHeader">
             <div className="wrapper">
                 <div className="content">
@@ -28,5 +29,7 @@ export const ShareItemsFormHeader = () => {
                 </div>
             </div>
         </section>
+        }
+        </>
     )
 }
