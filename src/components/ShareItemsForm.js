@@ -9,22 +9,42 @@ import {useAuthState} from "react-firebase-hooks/auth";
 import {auth} from "../helpers/firebase";
 import {Summary} from "./ShareItemsFormSteps/Summary";
 import {ThankYou} from "./ShareItemsFormSteps/ThankYou";
-
+import { collection, addDoc } from "firebase/firestore";
+import { getFirestore } from 'firebase/firestore'
+import { doc, setDoc } from "firebase/firestore";
 
 export const ShareItemsForm = () => {
     const {step, setStep, formData} = useContext(ShareItemsContext);
     const [user] = useAuthState(auth)
 
     const sendData = () => {
-        const db = getDatabase();
-        set( ref( db, 'submittedForms/' + user.uid + '/' + Date.now()), {
-            formData
-        }).then(() => {
-            console.log("Success!")
-            setStep(6);
-        }).catch((error) => {
-            console.log(error)
-        })
+        const db = getFirestore();
+        // const db = getDatabase();
+        // set( ref( db, 'submittedForms/' + user.uid + '/' + Date.now()), {
+        //     formData
+        // }).then(() => {
+        //     console.log("Success!")
+        //     setStep(6);
+        // }).catch((error) => {
+        //     console.log(error)
+        // })
+
+        // addDoc(collection(db, "forms"), formData).then(() => {
+        //     console.log("Success!")
+        //     setStep(6);
+        // }).catch((error) => {
+        //     console.log(error)
+        // })
+
+        const timestamp = Date.now().toString();
+
+        setDoc(doc(db, `submittedData/forms/${user.uid}`, timestamp), {...formData, timestamp: Date.now()}).then(() => {
+                console.log("Success!")
+                setStep(6);
+            }).catch((error) => {
+                console.log(error)
+            })
+
     }
 
 
