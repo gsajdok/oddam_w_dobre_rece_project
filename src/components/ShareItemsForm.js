@@ -9,6 +9,10 @@ import {useAuthState} from "react-firebase-hooks/auth";
 import {auth} from "../helpers/firebase";
 import {Summary} from "./ShareItemsFormSteps/Summary";
 import {ThankYou} from "./ShareItemsFormSteps/ThankYou";
+import { collection, addDoc } from "firebase/firestore";
+import { getFirestore } from 'firebase/firestore'
+
+
 
 
 export const ShareItemsForm = () => {
@@ -16,15 +20,22 @@ export const ShareItemsForm = () => {
     const [user] = useAuthState(auth)
 
     const sendData = () => {
-        const db = getDatabase();
-        set( ref( db, 'submittedForms/' + user.uid + '/' + Date.now()), {
-            formData
-        }).then(() => {
+        const db = getFirestore();
+        // const db = getDatabase();
+        // set( ref( db, 'submittedForms/' + user.uid + '/' + Date.now()), {
+        //     formData
+        // }).then(() => {
+        //     console.log("Success!")
+        //     setStep(6);
+        // }).catch((error) => {
+        //     console.log(error)
+        // })
+        addDoc(collection(db, "forms"), formData).then(() => {
             console.log("Success!")
-            setStep(6);
         }).catch((error) => {
             console.log(error)
         })
+
     }
 
 
