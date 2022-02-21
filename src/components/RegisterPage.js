@@ -20,18 +20,14 @@ export const RegisterPage = () => {
     useEffect(() => {
         if (loading) {
             return;
-            //TODO: add a loading screen
         }
-        // if (user) navigate("/");
-        //TODO: don't let logged in users reach this page
+        if (user) navigate("/");
     }, [user, loading]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if(verifyRegister(setErrors, email, password, password2)) {
             registerWithEmailAndPassword(email, password);
-            navigate('/');
-            //TODO: Check if the registration was successful before navigating to dashboard, show errors otherwise
         }
     }
 

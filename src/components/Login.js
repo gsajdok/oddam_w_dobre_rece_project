@@ -21,17 +21,14 @@ export const LoginPage = () => {
     useEffect(() => {
         if (loading) {
             return;
-            //TODO: add a loading screen
         }
-        // if (user) navigate("/");
-        //TODO: don't let logged in users reach this page
+        if (user) navigate("/");
     }, [user, loading]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if(verifyLogin(setErrors, email, password)) {
             logInWithEmailAndPassword (email, password)
-            navigate('/');
         }
     }
 
