@@ -26,3 +26,26 @@
     padding: 0 2rem;
   }
 }
+
+.helpGroupsForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-bottom: 2rem;
+
+  .helpGroupsButtons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+}
+
+.customGroupForm {
+  input {
+    min-width: 70%;
+    background-color: transparent;
+    border: 1px solid $colorDarkAccent;
+    height: 2rem;
+  }
+}

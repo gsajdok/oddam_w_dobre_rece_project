@@ -72,26 +72,3 @@
     }
   }
 }
-
-.helpGroupsForm {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-
-  .helpGroupsButtons {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 2rem;
-
-    label.formButton {
-      @extend .button;
-      @extend .button--active;
-      display: inline-block;
-
-      input {
-        appearance: none;
-      }
-    }
-  }
-}
