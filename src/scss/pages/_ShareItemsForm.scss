@@ -53,8 +53,21 @@
 .twoColumns {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   gap: 2rem;
+
+  .column {
+    min-width: 50%;
+  }
+
+  p {
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      padding-right: 2rem;
+    }
+
+  }
 
   label {
     display: flex;
