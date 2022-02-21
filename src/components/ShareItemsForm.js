@@ -15,16 +15,17 @@ export const ShareItemsForm = () => {
     const {step, setStep, formData} = useContext(ShareItemsContext);
     const [user] = useAuthState(auth)
 
-    // const sendFormData = () => {
-    //     const db = getDatabase();
-    //     set( ref( db, 'submittedForms/' + userData.uid + '/' + Date.now()), {
-    //         formData
-    //     }).then(() => {
-    //         console.log("Success!")
-    //     }).catch((error) => {
-    //         console.log(error)
-    //     })
-    // }
+    const sendData = () => {
+        const db = getDatabase();
+        set( ref( db, 'submittedForms/' + user.uid + '/' + Date.now()), {
+            formData
+        }).then(() => {
+            console.log("Success!")
+            setStep(6);
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
 
 
     const stepHandlerSwitch = (id) => {
@@ -70,8 +71,9 @@ export const ShareItemsForm = () => {
                     <div className="errorWrapper">
                     </div>
                     <div className="buttonWrapper">
-                        {step>1 && <button onClick={prevButtonHandler} className="button button--active">Wstecz</button>}
-                        {step<6 && <button onClick={nextButtonHandler} className="button button--active">Dalej</button>}
+                        {step>1 && step<=5 && <button onClick={prevButtonHandler} className="button button--active">Wstecz</button>}
+                        {step<5 && <button onClick={nextButtonHandler} className="button button--active">Dalej</button>}
+                        {step===5 && <button onClick={sendData} className="button button--active">Potwierdzam</button>}
                     </div>
                 </div>
             </div>
