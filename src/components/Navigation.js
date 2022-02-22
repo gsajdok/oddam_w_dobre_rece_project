@@ -61,11 +61,7 @@ export const Navigation = ({scrollFunction, setScrollTarget}) => {
 
     if (isPhone) {
         return (
-            <div className="nav__wrapper nav__wrapper--sticky">
-                <div className="nav__container">
-                    <HamburgerMenu/>
-                </div>
-            </div>
+                    <HamburgerMenu accountContextMenu={accountContextMenu} scrollToID={scrollToID}/>
         )
     }
 
