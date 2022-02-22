@@ -21,6 +21,7 @@
         flex-grow: 0;
         position: relative;
         height: 100%;
+        overflow-x: hidden;
 
         @include upTo800px {
           position: absolute;

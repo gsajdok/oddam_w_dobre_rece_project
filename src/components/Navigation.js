@@ -1,12 +1,23 @@
 import {Link, useNavigate, useLocation} from "react-router-dom";
 import {useAuthState} from "react-firebase-hooks/auth";
 import {auth, logout} from "../helpers/firebase";
+import {useEffect, useState} from "react";
+import {HamburgerMenu} from "./HamburgerMenu";
 
 export const Navigation = ({scrollFunction, setScrollTarget}) => {
     let location = useLocation();
     const navigate = useNavigate();
     const [user, loading] = useAuthState(auth);
+    const [isPhone, setPhone] = useState(window.innerWidth < 800);
 
+    const updateMedia = () => {
+        setPhone(window.innerWidth < 800);
+    }
+
+    useEffect( () => {
+        window.addEventListener("resize", updateMedia);
+        return () => window.removeEventListener("resize", updateMedia);
+    })
 
     const scrollToID = (id) => {
         if(location.pathname === "/") {
@@ -46,6 +57,16 @@ export const Navigation = ({scrollFunction, setScrollTarget}) => {
                 )
             }
         }
+    }
+
+    if (isPhone) {
+        return (
+            <div className="nav__wrapper nav__wrapper--sticky">
+                <div className="nav__container">
+                    <HamburgerMenu/>
+                </div>
+            </div>
+        )
     }
 
     return (
