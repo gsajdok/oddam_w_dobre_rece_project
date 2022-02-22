@@ -2,8 +2,7 @@ import {Link, useNavigate, useLocation} from "react-router-dom";
 import {useAuthState} from "react-firebase-hooks/auth";
 import {auth, logout} from "../helpers/firebase";
 
-
-export const Navigation = ({logoutFunction, scrollFunction, setScrollTarget}) => {
+export const Navigation = ({scrollFunction, setScrollTarget}) => {
     let location = useLocation();
     const navigate = useNavigate();
     const [user, loading] = useAuthState(auth);

@@ -20,8 +20,9 @@ const logInWithEmailAndPassword = async (email, password) => {
     try {
         await signInWithEmailAndPassword(auth, email, password);
     } catch (err) {
-        console.error(err);
-        alert(err.message);
+        // console.error(err);
+        // alert(err.message);
+        alert("Error - Wrong account or password.")
     }
 };
 
@@ -35,8 +36,7 @@ const registerWithEmailAndPassword = async (email, password) => {
             email,
         });
     } catch (err) {
-        console.error(err);
-        alert(err.message);
+        alert("Error with registration. Please try again later");
     }
 };
 
