@@ -3,11 +3,17 @@ section.homeThreeColumns {
   background-image: url("../../assets/3 Columns Background.png");
   background-size: cover;
 
+  @include upTo800px {
+    height: auto;
+    padding: 5rem 0;
+  }
+
   .wrapper {
     max-width: 98.375rem;
     margin: 0 auto;
     height: 100%;
     padding: 0 5rem;
+
 
     .content {
       height: 100%;
@@ -17,14 +23,19 @@ section.homeThreeColumns {
       align-items: center;
       gap: 1rem;
 
+      @include upTo800px {
+        flex-direction: column;
+        gap: 5rem;
+      }
+
       article.column {
         color: $colorText;
         max-width: 20.875rem;
         text-align: center;
+
         * {
           display: block;
         }
-
 
         h3 {
           color: $colorHeader;

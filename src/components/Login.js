@@ -14,21 +14,18 @@ export const LoginPage = () => {
         email: false,
         password: false,
     })
-    const [user, loading, authError] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     const navigate = useNavigate();
 
 
     useEffect(() => {
-        if (loading) {
-            return;
-        }
         if (user) navigate("/");
-    }, [user, loading]);
+    }, [user]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if(verifyLogin(setErrors, email, password)) {
-            logInWithEmailAndPassword (email, password)
+            logInWithEmailAndPassword(email, password);
         }
     }
 
@@ -44,12 +41,20 @@ export const LoginPage = () => {
                                 <form id="accountForm" onSubmit={handleSubmit}>
                                     <label className="">
                                         Email
-                                        <input type="text" className={`textInput ${errors.email && "errorBorder"}`} value={email} onChange={(e) => setEmail(e.target.value)}/>
+                                        <input
+                                            type="text"
+                                            className={`textInput ${errors.email && "errorBorder"}`}
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}/>
                                         {errors.email && <span className="errorText">Podany email nie jest prawidłowy!</span>}
                                     </label>
                                     <label className="">
                                         Hasło
-                                        <input type="password" className={`textInput ${errors.password && "errorBorder"}`} value={password} onChange={(e) => setPassword(e.target.value)}/>
+                                        <input
+                                            type="password"
+                                            className={`textInput ${errors.password && "errorBorder"}`}
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}/>
                                         {errors.password && <span className="errorText">Podane hasło jest za krótkie!</span>}
                                     </label>
                                 </form>

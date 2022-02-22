@@ -1,16 +1,23 @@
 import {Link, useNavigate, useLocation} from "react-router-dom";
-import {useContext, useEffect} from "react";
-import {UserAuthContext} from "../contextAPI/userAuthContext";
+import {useAuthState} from "react-firebase-hooks/auth";
+import {auth, logout} from "../helpers/firebase";
+import {useEffect, useState} from "react";
+import {HamburgerMenu} from "./HamburgerMenu";
 
-
-export const Navigation = ({logoutFunction, scrollFunction, setScrollTarget}) => {
+export const Navigation = ({scrollFunction, setScrollTarget}) => {
     let location = useLocation();
     const navigate = useNavigate();
-    const [userData] = useContext(UserAuthContext);
+    const [user, loading] = useAuthState(auth);
+    const [isPhone, setPhone] = useState(window.innerWidth < 800);
 
-    const onClickHandler = () => {
-        logoutFunction();
+    const updateMedia = () => {
+        setPhone(window.innerWidth < 800);
     }
+
+    useEffect( () => {
+        window.addEventListener("resize", updateMedia);
+        return () => window.removeEventListener("resize", updateMedia);
+    })
 
     const scrollToID = (id) => {
         if(location.pathname === "/") {
@@ -25,21 +32,44 @@ export const Navigation = ({logoutFunction, scrollFunction, setScrollTarget}) =>
         return <div/>
     }
 
+    const accountContextMenu = (user) => {
+        if(loading) {
+            return (
+                <>
+                    <span className="button button--small" style={{visibility: "hidden"}}>Empty</span>
+                </>
+            )
+        } else {
+            if(user===null) {
+                return (
+                    <>
+                        <Link to="/logowanie"><span className="button button--small">Zaloguj</span></Link>
+                        <Link to="/rejestracja"><span className="button button--small button--yellow">Załóż konto</span></Link>
+                    </>
+                )
+            } else {
+                return (
+                    <>
+                        <span className="welcome">Cześć {user.email}!</span>
+                        <Link to="/oddaj-rzeczy"><span className="button button--small button--yellow">Oddaj rzeczy</span></Link>
+                        <Link to="/wylogowano"><span className="button button--small" onClick={() => logout(auth)}>Wyloguj</span></Link>
+                    </>
+                )
+            }
+        }
+    }
+
+    if (isPhone) {
+        return (
+                    <HamburgerMenu accountContextMenu={accountContextMenu} scrollToID={scrollToID}/>
+        )
+    }
+
     return (
         <div className="nav__wrapper">
             <div className="nav__container">
                 <nav className="account">
-                    {userData!==null ? <>
-                        <span className="welcome">Cześć {userData.email}!</span>
-                        <Link to="/oddaj-rzeczy"><span className="button button--small button--yellow">Oddaj rzeczy</span></Link>
-                        <Link to="/wylogowano"><span className="button button--small" onClick={onClickHandler}>Wyloguj</span></Link>
-                        </>
-                        :
-                        <>
-                        <Link to="/logowanie"><span className="button button--small">Zaloguj</span></Link>
-                        <Link to="/rejestracja"><span className="button button--small button--yellow">Załóż konto</span></Link>
-                        </>
-                    }
+                    {accountContextMenu(user)}
                 </nav>
                 <nav className="home">
                     <button className={`button ${location.pathname==="/" && `button--active`}`} onClick={() => scrollToID("header")}>Start</button>

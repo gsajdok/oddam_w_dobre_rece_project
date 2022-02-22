@@ -2,12 +2,14 @@
 
 @import 'settings/colors';
 @import 'settings/fonts';
+@import 'settings/mixins.scss';
 
 @import 'elements/button';
 @import 'elements/Navigation';
 @import 'elements/decoration';
 @import 'elements/form';
 @import 'elements/animations';
+@import 'elements/navHamburger';
 
 @import './pages/index';
 @import './pages/HomeHeader';

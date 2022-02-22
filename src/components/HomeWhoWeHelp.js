@@ -3,7 +3,6 @@ import {WhoWeHelpData} from "../assets/whoWeHelpData";
 import {useMemo, useState} from "react";
 import {Decoration} from "./Decoration";
 import {HomeWhoWeHelpButton} from "./HomeWhoWeHelpButton";
-import {CSSTransition} from "react-transition-group";
 
 export const HomeWhoWeHelp = ({id}) => {
     const [currentData, setCurrentData] = useState(WhoWeHelpData[0]);

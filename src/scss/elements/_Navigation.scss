@@ -28,6 +28,12 @@
       flex-direction: row;
       gap: 0.5rem;
     }
+
+    nav.home .button {
+      @include upTo900px {
+        font-size: 0.95rem;
+      }
+    }
   }
 }
 
