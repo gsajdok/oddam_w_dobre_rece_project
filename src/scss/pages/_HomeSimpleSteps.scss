@@ -1,6 +1,10 @@
 section.homeSimpleSteps {
   height: 47.4375rem;
 
+  @include upTo800px {
+    height: auto;
+  }
+
     .content {
       display: flex;
       flex-direction: column;
@@ -19,6 +23,10 @@ section.homeSimpleSteps {
         background-color: $colorBackground;
         padding: 0 5rem;
 
+        @include upTo800px {
+          height: auto;
+        }
+
         .wrapper {
           max-width: 69.125rem;
           margin: 0 auto;
@@ -28,7 +36,18 @@ section.homeSimpleSteps {
           justify-content: space-between;
           align-items: center;
 
-          article.column {
+          @include upTo800px {
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 2rem 0;
+
+            & > article.column {
+              flex: 30%;
+              max-width: none;
+            }
+          }
+
+          .column {
             max-width: 10rem;
             display: flex;
             flex-direction: column;

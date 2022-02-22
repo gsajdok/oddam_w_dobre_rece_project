@@ -1,5 +1,8 @@
 .homeAboutUs {
   background-color: $colorBackground;
+  @include upTo800px {
+    background-color: transparent;
+  }
 
   .wrapper {
     max-width: 100rem;
@@ -18,12 +21,22 @@
         flex-grow: 0;
         position: relative;
         height: 100%;
+
+        @include upTo800px {
+          position: absolute;
+          z-index: -5;
+          top: 0;
+          left: 0;
+          opacity: 20%;
+        }
+
         img {
           position: absolute;
           left: 0;
           bottom: 0;
           height: 100%;
           display: inline-block;
+
         }
       }
 
@@ -33,6 +46,10 @@
         justify-content: center;
         align-items: center;
         padding: 0 2rem;
+
+        @include upTo800px {
+          flex-basis: 100%;
+        }
       }
 
       .about {

@@ -1,0 +1,3 @@
+@mixin upTo800px {
+  @media (max-width: 800px) { @content; }
+}

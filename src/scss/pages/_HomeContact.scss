@@ -26,9 +26,17 @@
       align-items: flex-end;
       justify-content: center;
 
+      @include upTo800px {
+        align-items: center;
+      }
+
       .form__wrapper {
         text-align: center;
         width: 33rem;
+
+        @include upTo800px {
+          width: auto;
+        }
       }
 
       .copyright {
