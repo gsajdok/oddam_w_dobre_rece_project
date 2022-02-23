@@ -18,6 +18,14 @@
         flex-grow: 0;
         position: relative;
         height: 100%;
+
+        @include upTo800px {
+          position: absolute;
+          right: -10rem;
+          z-index: -10;
+          opacity: 15%;
+        }
+
         img {
           position: absolute;
           right: 0;
@@ -28,7 +36,7 @@
       }
 
       .cta__wrapper {
-        min-width: 44.125rem;
+        max-width: 44.125rem;
       }
 
       .cta {
@@ -51,6 +59,12 @@
           justify-content: center;
           width: 100%;
           gap: 2rem;
+          @include upTo800px {
+            flex-wrap: wrap;
+            .step {
+              margin-bottom: 2rem;
+            }
+          }
 
           .step {
             width: 8.5rem;
