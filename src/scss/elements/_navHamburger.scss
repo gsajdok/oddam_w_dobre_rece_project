@@ -1,4 +1,63 @@
 .navHamburger__wrapper {
   top: 0;
   position: sticky;
+  background-color: $colorBackground;
+  opacity: 95%;
+  border-bottom: 2px solid $colorAccent;
+  z-index: 5;
+
+  .navHamburger__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    padding-bottom: 0;
+
+    .account {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 1rem;
+      justify-content: flex-start;
+      align-items: center;
+
+      .button__hamburger {
+        font-size: 2rem;
+        border-radius: 10rem;
+        padding: 0;
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: auto;
+
+      }
+    }
+
+    .absoluteAnchor {
+      position: relative;
+    }
+
+    .heightContainer {
+      position: absolute;
+      max-height: 20rem;
+      transition: max-height 0.5s linear;
+      overflow: hidden;
+
+      &.heightContainer--hidden {
+        max-height: 0rem;
+      }
+    }
+
+    .home {
+      display: flex;
+      flex-direction: column;
+      background-color: $colorBackground;
+      opacity: 95%;
+      border-bottom: 2px solid $colorAccent;
+      right: 0;
+      gap: 1rem;
+      padding: 1rem;
+    }
+  }
 }
