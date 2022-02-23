@@ -96,9 +96,6 @@ export const ShareItemsForm = () => {
                         {step>1 && step<=5 && <button onClick={prevButtonHandler} className="button button--active">Wstecz</button>}
                         {step<5 && <button onClick={nextButtonHandler} className="button button--active">Dalej</button>}
                         {step===5 && <button onClick={sendData} className="button button--active">Potwierdzam</button>}
-                        <button onClick={() => console.log(formData)}>form data</button>
-                        <button onClick={() => console.log(isError)}>is error</button>
-                        <button onClick={() => console.log(step)}>step</button>
                     </div>
                 </div>
             </div>
