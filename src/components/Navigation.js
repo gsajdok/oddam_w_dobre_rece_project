@@ -1,13 +1,15 @@
 import {Link, useNavigate, useLocation} from "react-router-dom";
 import {useAuthState} from "react-firebase-hooks/auth";
 import {auth, logout} from "../helpers/firebase";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {HamburgerMenu} from "./HamburgerMenu";
+import {PageContentContext} from "../contextAPI/contentContext";
 
 export const Navigation = ({scrollFunction, setScrollTarget}) => {
     let location = useLocation();
     const navigate = useNavigate();
     const [user, loading] = useAuthState(auth);
+    const { language, updateLanguage } = useContext(PageContentContext)
     const [isPhone, setPhone] = useState(window.innerWidth < 800);
 
     const updateMedia = () => {
@@ -69,6 +71,12 @@ export const Navigation = ({scrollFunction, setScrollTarget}) => {
         <div className="nav__wrapper">
             <div className="nav__container">
                 <nav className="account">
+                    <div className="languageWrapper">
+                        <select value={language} onChange={(e) => {updateLanguage(e.target.value)}}>
+                            <option value="polish">Polish</option>
+                            <option value="english">English</option>
+                        </select>
+                    </div>
                     {accountContextMenu(user)}
                 </nav>
                 <nav className="home">

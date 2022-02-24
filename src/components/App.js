@@ -8,11 +8,13 @@ import {ShareItems} from "./ShareItems";
 
 import {ShareItemsProvider} from "../contextAPI/shareItemsContext";
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {scrollFunction} from "../helpers/scrollFunction";
+import {PageContentContext} from "../contextAPI/contentContext";
 
 function App() {
     const [scrollTarget, setScrollTarget] = useState(null);
+    const {context} = useContext(PageContentContext);
 
     useEffect(() => {
         if(scrollTarget !== null) {
@@ -20,6 +22,10 @@ function App() {
             setScrollTarget(null);
         }
     }, [scrollTarget])
+
+    if((Object.keys(context.strings).length === 0 && context.strings.constructor === Object)) {
+        return <h2>Loading</h2>
+    }
 
   return (
         <BrowserRouter>
