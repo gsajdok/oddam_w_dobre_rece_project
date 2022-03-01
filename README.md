@@ -12,13 +12,13 @@ The project was created with:
 - Firebase
   - Auth
 
-##Features
+## Features
 - Landing page with necessary informations
 - User authentication and functionalities for logged in users
 - Contact form using a REST API
 - Multiple-steps form to provide information about shared items, sending data to a database
 
-###To do:
+### To do:
 - Clean up unused variables and methods made when solving issues
 - Standardize formatting and usage of useState across the page
 - Remove unecessary page components
@@ -26,7 +26,7 @@ The project was created with:
 - Add more mockup data for static content
 - Pull used functions into their own reusable components
 
-###Potential additions in the future:
+### Potential additions in the future:
 - Admin panel to read, edit and remove submitted forms
 - Testing
 
