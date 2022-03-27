@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/oddam_w_dobre_rece_project/static/css/main.bd751f17.css",
-    "main.js": "/oddam_w_dobre_rece_project/static/js/main.2007bb20.js",
+    "main.js": "/oddam_w_dobre_rece_project/static/js/main.3926cdb6.js",
     "static/media/3 Columns Background.png": "/oddam_w_dobre_rece_project/static/media/3 Columns Background.8ac466740bf11daa893f.png",
     "static/media/Background-Contact-Form.jpg": "/oddam_w_dobre_rece_project/static/media/Background-Contact-Form.655c54427d3b66427460.jpg",
     "static/media/Form-Hero-Image.jpg": "/oddam_w_dobre_rece_project/static/media/Form-Hero-Image.75cd77265f1736b72327.jpg",
@@ -18,10 +18,10 @@
     "static/media/Decoration.svg": "/oddam_w_dobre_rece_project/static/media/Decoration.aad75271e33dd889f25b0e24a5e6c0b2.svg",
     "index.html": "/oddam_w_dobre_rece_project/index.html",
     "main.bd751f17.css.map": "/oddam_w_dobre_rece_project/static/css/main.bd751f17.css.map",
-    "main.2007bb20.js.map": "/oddam_w_dobre_rece_project/static/js/main.2007bb20.js.map"
+    "main.3926cdb6.js.map": "/oddam_w_dobre_rece_project/static/js/main.3926cdb6.js.map"
   },
   "entrypoints": [
     "static/css/main.bd751f17.css",
-    "static/js/main.2007bb20.js"
+    "static/js/main.3926cdb6.js"
   ]
 }
