@@ -50,7 +50,7 @@ export const WhoWeHelpData = [
         ]
     },
     {
-        description: "Pozarzodawe! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+        description: "Pozarzadowe! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
         list: [
             {
                 name: "Organizacja 1",
@@ -85,7 +85,7 @@ export const WhoWeHelpData = [
         ]
     },
     {
-        description: "Lokanle! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+        description: "Lokalne! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
         list: [
             {
                 name: "Lokalna 1",
