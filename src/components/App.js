@@ -7,7 +7,7 @@ import {LogoutPage} from "./Logout";
 import {ShareItems} from "./ShareItems";
 
 import {ShareItemsProvider} from "../contextAPI/shareItemsContext";
-import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+import {BrowserRouter, HashRouter, Navigate, Route, Routes} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {scrollFunction} from "../helpers/scrollFunction";
 
@@ -22,7 +22,7 @@ function App() {
     }, [scrollTarget])
 
   return (
-        <BrowserRouter>
+        <HashRouter>
             <Navigation scrollFunction={(id) => scrollFunction(id)} setScrollTarget={(id) => setScrollTarget(id)}/>
             <Routes>
                 <Route path="*" element={<Navigate replace to="/404"/>}/>
@@ -37,7 +37,7 @@ function App() {
                 }/>
                 <Route path="/404" element={<NotFound/>}/>
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
   );
 }
 
